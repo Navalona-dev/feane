@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de paiement{% endblock %}
+
+{% block body %}
+<section class="error-booking">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="card shadow p-5">
+                    <h3 class="text-center fw-bold mb-4">Erreur de paiement</h3>
+                    <p>
+                        Bonjour <strong> {{booking.booker.lastName}} {{booking.booker.firstName|upper}}</strong> 
+                    </p>
+                    <p>
+                        Il semblerait que votre paiement est échoué pour votre commande n°: <strong>{{booking.reference}}</strong>
+                    </p>
+                    <p>
+                        Une confiramtion d'erreur vient de vous être envoyée par email à l'adresse {{booking.booker.email}}
+                    </p>
+                   <a href="{{path('app_booking_add', {'id' : booking.tableRestaurant.id})}}" class="mt-4 text-black btn btn-order btn-primary btn-sm">Réessayer le paiement</a>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% set header = '' %}
+{% for homePage in homePages %}
+	{% if homePage.label == "header_front" %}
+		{% set header = homePage %}
+	{% endif %}
+{% endfor %}
+
+ <div id="topbar" class="">
+        <div class="d-flex justify-content-between topbar-content pt-2">
+            <div class="contact-info d-flex align-items-center text-black">
+                <i class="fas fa-envelope mt-1"></i> <a href="mailto:contact@example.com" class="text-black"> {{email}} </a>
+                <i class="fas fa-phone"></i> <span>{{contact}}</span> 
+            </div>
+            <div class="d-none d-lg-flex social-links align-items-end">
+                {% for social in socialLink %}
+                <a href="{{social.link}}" class="social-link-list text-black" title="{{social.name}}">
+                    <i class="{{social.icon}}"></i>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<header class="header shadow fixed-top ">
+	<nav class="navbar navbar-expand-lg ">
+		<div class="container-fluid ">
+			<a class="navbar-brand text-white " href="{{path('app_home')}}">
+				<img src="{{ asset('uploads/siteConfig/' ~ logo) }}" alt="" style="height: 90px;">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavDropdown">
+				<ul class="navbar-nav ">
+					{% for index, menu in menus %}
+						{% if attribute(menu, 'dropDownMenus') is not empty %}
+							<li class="nav-item dropdown">
+								{% if menu.link == "#" %}
+									<a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										{{menu.name}}
+									</a>
+								{% else %}
+									<a class="nav-link text-white dropdown-toggle" href="{{path(menu.link)}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										{{menu.name}}
+									</a>
+								{% endif %}
+								{% if app.user %}
+									<ul class="dropdown-menu shadow">
+										{% for dropdown in attribute(menu, 'dropDownMenusActiveAndIsUserLogin') %}
+											{% if dropdown.isParameter == true %}
+												<li>
+													<a class="dropdown-item text-white" href="{{path(dropdown.link, {'id' : app.user.id})}}">{{dropdown.name}}</a>
+												</li>
+											{% else %}
+												{% if dropdown.link == "#" %}
+													<li>
+														<a class="dropdown-item text-white" href="#">{{dropdown.name}}</a>
+													</li>
+												{% else %}
+													<li>
+														<a class="dropdown-item text-white" href="{{path(dropdown.link)}}">{{dropdown.name}}</a>
+													</li>
+												{% endif %}
+											{% endif %}
+										{% endfor %}
+									</ul>
+								{% else %}
+									<ul class="dropdown-menu shadow">
+										{% for dropdown in attribute(menu, 'dropDownMenusActiveAndIsUserLogout') %}
+											{% if dropdown.isParameter == true %}
+												<li>
+													<a class="dropdown-item text-white" href="{{path(dropdown.link, {'id' : app.user.id})}}">{{dropdown.name}}</a>
+												</li>
+											{% else %}
+												{% if dropdown.link == "#" %}
+													<li>
+														<a class="dropdown-item text-white" href="#">{{dropdown.name}}</a>
+													</li>
+												{% else %}
+													<li>
+														<a class="dropdown-item text-white" href="{{path(dropdown.link)}}">{{dropdown.name}}</a>
+													</li>
+												{% endif %}
+											{% endif %}
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% else %}
+							{% if menu.isParameter == true %}
+								<li class="nav-item">
+									<a data-menu="{% if index == 1 %}about{% else %}{{menu.name}}{% endif %}" class="nav-link text-white {% if index == 0 %} active {% endif %}" aria-current="page" href="{{path(menu.link, {'id' : app.user.id})}}">{{menu.name}}</a>
+								</li>
+							{% else %}
+								{% if menu.link == "#" %}
+									<li class="nav-item">
+										<a data-menu="{% if index == 1 %}about{% else %}{{menu.name}}{% endif %}" class="nav-link text-white {% if index == 0 %} active {% endif %} " aria-current="page" href="#">{{menu.name}}</a>
+									</li>
+								{% else %}
+									<li class="nav-item">
+										<a data-menu="{% if index == 1 %}about{% else %}{{menu.name}}{% endif %}" class="nav-link text-white {% if index == 0 %} active {% endif %} " aria-current="page" href="{{path(menu.link)}}">{{menu.name}}</a>
+									</li>
+								{% endif %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="d-flex-justify-content-end header-end">
+				<a href="{{path('app_cart')}}" class="mx-4">
+					<i class="fas fa-shopping-cart"></i>
+				</a>
+				<a href="{{path('app_produit')}}" class="btn btn-primary btn-sm btn-header text-black px-4"> {{header.homePageButton}} </a>
+			</div>
+			
+		</div>
+	</nav>
+</header>

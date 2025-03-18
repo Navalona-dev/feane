@@ -1,0 +1,38 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}Feane - Modification photo de profile {% endblock %}
+{% block content_title %} {% endblock %}
+
+
+{% block main %}
+
+<section class="edit-profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+                <div class="card p-5 shadow">
+                    <h4 class="text-center mt-1 mb-5 pb-1 fs-3 fw-bold">Modification Photo de Profile</h4>
+                    {{form_start(form)}}
+                        <div class="form-group mb-3">
+                            <label class="mb-2" for="">Nouveau Photo de profile</label>
+                            <span class="error"> {{form_errors(form.imageFile)}} </span>
+                            {{form_widget(form.imageFile)}}
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" type="submit" style="width: 100%;">Modifier</button>
+                            <a href="{{path('app_admin_mon_profile')}}" class="btn btn-secondary mt-3" style="width: 100%;"> Retour </a>
+                        </div>
+                     {{form_end(form)}}
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+        </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+
+
+

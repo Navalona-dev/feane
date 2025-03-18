@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% form_theme form 'front/security/_collection.html.twig' %}
+
+{% block body %}
+<section class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="card shadow px-5 py-5 text-white">
+                    <h4 class="text-center mb-4 fw-bold fs-1">
+                        Connectez-Vous
+                    </h4>
+                    {{form_start(form)}}
+        
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre nom de famille <sup class="text-danger">*</sup></label>
+                                <span class="error"> {{form_errors(form.firstName)}} </span>
+                                {{form_widget(form.firstName)}}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre Prénom(s)</label>
+                                <span class="error"> {{form_errors(form.lastName)}} </span>
+                                {{form_widget(form.lastName)}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre adresse e-mail <sup class="text-danger">*</sup></label>
+                                <span class="error"> {{form_errors(form.email)}} </span>
+                                {{form_widget(form.email)}}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre Sexe <sup class="text-danger">*</sup></label>
+                                <span class="error"> {{form_errors(form.sexe)}} </span>
+                                {{form_widget(form.sexe)}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre mot de passe <sup class="text-danger">*</sup></label>
+                                <span class="error"> {{form_errors(form.password)}} </span>
+                                {{form_widget(form.password)}}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Confirmation mot de passe <sup class="text-danger">*</sup></label>
+                                <span class="error"> {{form_errors(form.passwordConfirm)}} </span>
+                                {{form_widget(form.passwordConfirm)}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre numéro de téléphone <sup class="text-danger">*</sup></label>
+                                <span class="error"> {{form_errors(form.phoneNumber)}} </span>
+                                {{form_widget(form.phoneNumber)}}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre Photo de profile </label>
+                                <span class="error"> {{form_errors(form.imageFile)}} </span>
+                                {{form_widget(form.imageFile)}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="" class="mb-2">Votre Adresse exacte <sup class="text-danger">*</sup></label>
+                        <span class="error"> {{form_errors(form.adresses)}} </span>
+                        {{form_widget(form.adresses)}}
+                    </div>
+
+                    {#<div class="form-group d-flex justify-content-center mb-2">
+                        <span class="error"> {{form_errors(form.captcha)}} </span>
+                    </div>
+
+                    <div class="form-group mb-4 d-flex justify-content-center">
+                        {{form_widget(form.captcha)}}
+                    </div>#}
+
+                    <div class="form-group mb-4">
+                        <button type="submit" class="btn btn-primary btn-md btn-auth text-black" style="width: 100%;">Enregistrer les informations</button>
+                    </div>
+
+                    <div class="d-flex flex-wrap align-items-center justify-content-center pb-4">
+                        <p class="mb-0 me-2 text-white">Vous avez déjà un compte</p>
+                        <a href="{{path('app_login_front')}}" class="btn-outline-auth btn btn-outline-primary btn-sm px-3 text-white"> Se connecter </a>
+                    </div>
+                    
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}

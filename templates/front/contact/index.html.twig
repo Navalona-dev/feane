@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+{% set contact = "" %}
+{% for homePage in homePages %}
+    {% if homePage.label == 'contact' %}
+        {% set contact = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="contact">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{contact.title}} </h1>
+        <div class="text-center mb-5">
+            {{contact.description|raw}}
+        </div>
+        <div class="row mt-5">
+            <div class="col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+               
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{message}}
+                    </div>
+                {% endfor %}
+    
+                <div class="contact-form card shadow p-5">
+                    {% if not app.user %}
+                        <div class="alert alert-danger">
+                            Veuillez d'abord vous connecter ou créer un compte avant de nous contacter
+                        </div>
+                    {% endif %}
+                    {{form_start(form)}}
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-sm-12 col-md-12">
+                                <div class="form-group mb-4">
+                                    <span class="error"> {{ form_errors(form.name) }} </span>
+                                    {{ form_widget(form.name, {'attr': {'readonly': app.user is null ? 'readonly' : ''} }) }}
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-sm-12 col-md-12">
+                                <div class="form-group mb-4">
+                                    <span class="error"> {{form_errors(form.phone)}} </span>
+                                    {{form_widget(form.phone, {'attr': {'readonly': app.user is null ? 'readonly' : ''} }) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <span class="error"> {{form_errors(form.subject)}} </span>
+                            {{form_widget(form.subject, {'attr': {'readonly': app.user is null ? 'readonly' : ''} }) }}
+                        </div>
+                        <div class="form-group mb-4">
+                            <span class="error"> {{form_errors(form.message)}} </span>
+                            <textarea name="" id="" cols="30" rows="10" class="ckeditor" placeholder="Message"></textarea>
+                            {{form_widget(form.message, {'attr': {'readonly': app.user is null ? 'readonly' : ''} }) }}
+                        </div>
+                        <div class="form-group mb-4 d-flex justify-content-center">
+                            <button type="submit" class="text-black btn btn-primary btn-contact px-5 btn-sm">Envoyer le message</button>
+                        </div>
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}Feane - Mon Profiles  {% endblock %}
+{% block content_title %} {% endblock %}
+
+
+{% block main %}
+
+    <section class="mon-profile">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{message}}
+            </div>
+        {% endfor %}
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="admin-infos">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                <div class="admin-img">
+                                    {% if admin.profile is not empty %}
+                                    <img src="{{vich_uploader_asset(admin, 'imageFile')}}" alt="">
+                                    {% else %}
+                                    <img src="{{asset('../../../uploads/homePage/user.png')}}" alt="">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                                <div class="admin-info mt-3">
+                                    <h5 class="fw-bold"> {{admin.firstName|upper}} {{admin.lastName}} </h5>
+                                    <p class="text-black"> <i class="fas fa-envelope"></i> {{admin.email}} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-content mt-5">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                                <a href="{{path('app_info_admin_edit')}}" class="btn btn-primary btn-sm" style="width: 100%;"> Modifier mes informations </a>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                                <a href="{{path('app_admin_edit_email')}}" class="btn btn-primary btn-sm" style="width: 100%;"> Modifier mon adresse e-mail </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <a href="{{path('admin_password_edit')}}" class="btn btn-primary btn-sm" style="width: 100%;"> Modifier mon mot de passe </a>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <a href="{{path('app_admin_edit_profile')}}" class="btn btn-primary btn-sm" style="width: 100%;"> Modifier ma photo de profile </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="admin-description">
+                        <p> </p>
+                        <p>  </p>
+                        <p>  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

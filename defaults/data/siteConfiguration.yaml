@@ -1,0 +1,31 @@
+siteConfig1:
+  favicon: favicon-fast.png
+  logo: logo-fast-food.png
+  email: contact-feane@gmail.com
+  telephone: +33 7 00 00 45
+  adresse: 9261 Thompson Route, South Stephan, FL 31526
+  socialLinks: 
+    block1:
+      name: Facebook
+      link: https://facebook.feane.com
+      icon: 	fab fa-facebook
+
+    block2:
+      name: Instagram
+      link: https://instagram.feane.com
+      icon: fab fa-instagram
+
+    block3:
+      name: Linkedin
+      link: https://linkedin.feane.com
+      icon: fab fa-linkedin
+
+    block4:
+      name: Whatsapp
+      link: https://whatsapp.feane.com
+      icon: fab fa-whatsapp
+
+    block5:
+      name: Discord
+      link: https://discord.feane.com
+      icon: fab fa-discord

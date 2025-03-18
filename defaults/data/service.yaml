@@ -1,0 +1,29 @@
+serviece1:
+  title: Dégustation de Menu Découverte
+  description: <p>Laissez-nous vous emmener dans un voyage culinaire inoubliable avec notre Menu Découverte. Découvrez une sélection soigneusement élaborée de plats exquis, mettant en avant les saveurs les plus délicates et les ingrédients les plus frais de la saison. Laissez nos chefs vous surprendre avec des créations uniques à chaque bouchée.</p>
+  subTitle: 'Voyage Gourmand : Menu Découverte'
+  iconFile: 	fas fa-utensils
+
+serviece2:
+  title: Événements Privés et Célébrations
+  description: <p>Chez Feane, nous transformons vos événements spéciaux en moments mémorables. Que ce soit pour un anniversaire, un mariage, une réunion d'affaires ou toute autre occasion, notre équipe dévouée vous réserve un espace privé élégant et un service sur mesure. Laissez-nous prendre en charge tous les détails pour que vous puissiez profiter de chaque instant.</p>
+  subTitle: 'Des Moments Mémorables : Événements Privés'
+  iconFile: fas fa-glass-cheers
+
+serviece3:
+  title: Cours de Cuisine
+  description: <p>Rejoignez nos chefs experts pour une expérience immersive dans l'art de la cuisine. Apprenez les techniques, découvrez les secrets des plats signatures de Feane et explorez la créativité culinaire. Nos cours exclusifs sont parfaits pour les passionnés de gastronomie qui souhaitent perfectionner leurs compétences.</p>
+  subTitle: "L'Art de la Cuisine : Cours Exclusifs"
+  iconFile: fas fa-cogs
+
+serviece4:
+  title: Service Traiteur
+  description: <p>Apportez le raffinement de Feane à votre domicile ou à votre lieu de choix avec notre service traiteur. Nos chefs préparent des mets exquis pour vos événements privés ou professionnels. Que ce soit un dîner intime ou une grande réception, laissez-nous créer un menu sur mesure qui éblouira vos invités.</p>
+  subTitle: "Feane à Votre Porte : Service Traiteur"
+  iconFile: fas fa-utensil-spoon
+
+serviece5:
+  title: Dégustation de Vins
+  description: <p>Plongez dans le monde fascinant des vins d'exception avec nos dégustations guidées. Notre sommelier expérimenté vous fera découvrir une sélection de vins raffinés, accompagnés d'accords mets et vins spécialement conçus pour une expérience gustative complète.</p>
+  subTitle: "Voyage Œnologique : Dégustation de Vins"
+  iconFile: fas fa-wine-glass

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement de ma commande{% endblock %}
+
+{% block body %}
+{% set order = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "recap-commande" %}
+        {% set order = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="order">
+    <div class="container">
+        <h1 class="text-center fw-bold fs-1 mb-4"> {{order.title}} </h1>
+        <div class="text-center mb-5">
+            {{order.description|raw}}
+        </div>
+        <div class="order-content">
+            <span id="reference" data-reference="{{ reference }}"></span>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-5">
+                        <div class="card shadow p-4">
+                            <div class="adress-delivery mb-4">
+                                <h3 class="fw-bold mb-3">Mon Adresse de livraison</h3>
+                               <p> {{adresse|raw}} </p>
+                            </div>
+                            <div class="transporteur">
+                                <h3 class="fw-bold mb-3">Mon Transporteur</h3>
+                               <p> 
+                                {{carrier.name}} <br/>
+                                {{(carrier.price / 100)|number_format(2, ',', '.')}} € <br/>
+                                {{carrier.description|raw}}
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="recap-order">
+                            <h3 class="fw-bold mb-3 text-center mb-5">Ma commande</h3>
+                            <div class="recap-table">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr class="text-center text-nowrap">
+                                            <th>Images</th>
+                                            <th>Produits</th>
+                                            <th>Prix</th>
+                                            <th>Quantités</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for element in dataCart %}
+                                        <tr class="text-center text-nowrap">
+                                            <td>
+                                                <img src="{{ asset('uploads/produits/' ~ element.produit.image) }}" alt="" style="height: 30px; width: 30px; border-radius: 100%;">
+                                            </td>
+                                            <td> {{element.produit.menuRestaurant.name}} ({{element.produit.title}}) </td>
+                                            <td class="text-nowrap">{{(element.produit.price / 100)|number_format(2, ',', '.')}} €</td>
+                                            <td> {{element.quantity}} </td>
+                                            <td>{{((element.produit.price / 100) * element.quantity)|number_format(2, ',', '.')}} €</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="row mt-4 mb-4">
+                                    <div class="col-xl-6 col-lg-4 col-md-12 col-sm-12"></div>
+                                    <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12">
+                                        {% set total = 0 %}
+                                            {% set subTotal = 0 %}
+                                            {% for element in dataCart %}
+                                                {% set total = (element.produit.price / 100) * element.quantity %}
+    
+                                                {% set subTotal = subTotal + total %}
+                                            {% endfor %}
+            
+                                            <p style="display: flex; justify-content: end;"><span style="margin-right: 20px;" class="fw-bold">Nombre de produits : </span> {{dataCart|length}} </p>
+                                            <p style="display: flex; justify-content: end;"><span style="margin-right: 20px;" class="fw-bold">Sous-total : </span> {{subTotal|number_format(2, ',', '.')}} € </p>     
+                                            <p style="display: flex; justify-content: end;"><span style="margin-right: 20px;" class="fw-bold">Cout de livraison : </span> {{(carrier.price / 100)|number_format(2, ',', '.')}} € </p>
+                                            
+                                    </div>
+                                    <div class="mb-5">
+                                        <span id="stripe-public-key" data-stripe="{{stripe_public_key}}"></span>
+                                        <a class="btn btn-primary btn-sm btn-order text-black mb-3" id="checkout-button" style="width: 100%;">Payer | {{(subTotal + (carrier.price / 100))|number_format(2, ',', '.')}} € </a>
+                                        <a href="{{path('app_cart')}}" class="btn btn-secondary btn-sm" style="width: 100%;">Retour à mon panier</a>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+<p class="fw-bold">Chère {{ user.lastName }} {{ user.firstName|upper }}</p> </br>
+<p> Nous sommes ravis de vous informer que votre réseravtion d'une table a été enregistrée avec succès:</p>
+<p> Type de table : {{booking.tableRestaurant.type}} </p>
+<p>Capacité : {{booking.tableRestaurant.capacity}} </p>
+<p>Emplacement : {{booking.tableRestaurant.emplacement}} </p>
+<p>Notes speciales : {{booking.tableRestaurant.noteSpecial}} </p>
+<p> {{booking.tableRestaurant.description}} </p>
+<p> Date : {{booking.dateBooking|date('d-m-Y')}} </p>
+<p> Heure : {{booking.bookingHour|date('H:s')}} </p>
+<p>
+    Veuillez prendre note de cette date dans votre agenda et 
+    assurez-vous d'être présent à l'heure indiquée. 
+    Si vous avez des questions ou besoin d'informations supplémentaires, 
+    n'hésitez pas à nous contacter.
+</p>
+<p> Nous vous remercions pour votre confiance et nous sommes impatients de vous accueillir à votre table. </p>
+<a href="{{ url|raw }}">Voir la réservation</a>
+<p> Cordialement </p>
+<p> L'équipe Feane </p>

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+
+{% set menu = '' %}
+
+{% for homePage in homePages %}
+    {% if homePage.label == "home_front_menu" %}
+        {% set menu = homePage %}
+    {% endif %}
+{% endfor %}
+
+<section class="produit">
+    <div class="container">
+        <div class="menu mb-5" id="menu">
+            <div class="menu-title">
+                <h1 class="fw-bold mb-4 fs-1">  {{menu.title}} </h1>
+                <p class="text-center mb-5"> {{menu.description}} </p>
+              </div>
+              <div class="row mt-3 mb-4">
+                <div class="col-lg-12 d-flex justify-content-center">
+                  <ul id="menu-filters">
+                    <li data-filter="*" class="menu-link active">All</li>
+                    {% for menu in menuResto %}
+                        <li data-filter="filter-{{menu.name}}" class="menu-link" > {{menu.name}} </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                {% for produit in produits %}
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 card-col mb-4" data-menu="filter-{{produit.menuRestaurant.name}}">
+                    <div class="card text-white pb-4">
+                        <div class="card-img d-flex justify-content-center pt-4 mb-4 pb-4">
+                            <img src="{{ asset('uploads/produits/' ~ produit.image) }}" alt="">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="fw-bold"> {{produit.title}} </h3>
+                            <p class="produit-description"> {{produit.description|raw}} </p>
+                            <p class="produit-price mt-5 fs-4"> {{((produit.price)/100)|number_format(2, ',', '.')}} € </p>
+                            <a href="{{path('app_cart_add', {'id' : produit.id})}}"><i class="fas fa-shopping-cart produit-cart text-black"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="pagination d-flex justify-content-center mt-5">
+                    {{ knp_pagination_render(produits) }}
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

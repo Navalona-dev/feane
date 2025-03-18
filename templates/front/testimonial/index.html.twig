@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Temoingnage{% endblock %}
+
+{% block body %}
+
+{% set testimonial = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "testimonial" %}
+        {% set testimonial = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="testimonial">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{testimonial.title}} </h1>
+        <div class="text-center mb-5">
+            {{testimonial.description|raw}}
+        </div>
+        <div class="testimonial-content">
+            <div class="row">
+                {% for testimonial in testimonials %}
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                        <div class="card shadow p-4 text-center height mb-4">
+                            <div class="d-flex justify-content-center mb-4">
+                                {% if testimonial.user.profile is not empty %}
+                                <img class="testimonial-img" src="{{vich_uploader_asset(testimonial.user, 'imageFile')}}" alt="">
+                                {% else %}
+                                <img class="testimonial-img" src="{{ asset('uploads/homePage/user.png') }}" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="description">
+                                <p class="fw-bold"> {{testimonial.user.lastName}} {{testimonial.user.firstName|upper}} </p>
+                                <p><span>Date de témoignage : </span> {{testimonial.createdAt|date('d-m-Y à H:i')}} </p>
+                                {% if testimonial.comment|length > 100 %}
+                                    <div class="testimonial-less"> {{testimonial.comment|slice(0,100)|raw}} ... </div>
+                                    <div class="testimonial-more"> {{testimonial.comment|raw}} </div>
+                                    <button class="testimonial-readMore btn btn-primary btn-testimonial text-black mt-4 btn-sm" style="width: 100%;">Lire plus</button>
+                                    <button class="testimonial-readLess btn btn-primary btn-testimonial text-black mt-4 btn-sm" style="width: 100%;">Lire moins</button>
+                                {% else %}
+                                    <p> {{testimonial.comment|raw}} </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="pagination d-flex justify-content-center mt-5">
+                    {{ knp_pagination_render(testimonials) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

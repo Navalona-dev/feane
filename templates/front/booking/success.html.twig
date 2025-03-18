@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de réservation d'une table{% endblock %}
+
+{% block body %}
+<section class="success-booking">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="card shadow p-5">
+                    <h3 class="text-center fw-bold mb-4">Confirmation de réservation d'une table</h3>
+                    <p>
+                        Bonjour <strong> {{booking.booker.lastName}} {{booking.booker.firstName|upper}}</strong> 
+                    </p>
+                    <p>
+                        Nous vous remercions pour votre réservation n°: <strong>{{booking.reference}}</strong>
+                    </p>
+                    <p>
+                        Une confirmation vient de vous être envoyée par email à l'adresse {{booking.booker.email}}
+                    </p>
+                   
+                    <p>
+                        Pour suivre vote réservation rendez-vous dans votre 
+                        <a href="{{path('app_booking_list')}}" class="text-primary">liste de réservation</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

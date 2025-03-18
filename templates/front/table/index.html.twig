@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Table{% endblock %}
+
+{% block body %}
+{% set table = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "table" %}
+        {% set table = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="table-home">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{table.title}} </h1>
+        <div class="text-center mb-5">
+            {{table.description|raw}}
+        </div>
+        <div class="liste-table">
+            <div class="row">
+                {% for table in tables %}
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-5">
+                        <div class="card shadow card-table">
+                            <div class="numero-table">
+                                <p> {{table.number}} </p>
+                            </div>
+                            <div class="table-img">
+                                <img src="{{ asset('uploads/tables/' ~ table.image) }}" alt="" class="img-fluid">
+                            </div>
+                            <div class="table-content p-4">
+                                <h3 class="fw-bold text-center"> {{table.type}} </h3>
+                                <p><span class="fw-bold">Emplacement : </span>  {{table.emplacement}} </p>
+                                <p><span class="fw-bold">Capacités : </span> {{table.capacity}} </p>
+                                <p><span class="fw-bold">Notes spéciales : </span> {{table.noteSpecial}} </p>
+                                <p><span class="fw-bold">Coût de réservation : </span> {{(table.coutReservation / 100)|number_format(2, ',', '.')}} €</p>
+                                <p><span class="fw-bold">Description : </span> {{table.description|raw}} </p>
+                            </div>
+                            <div class="table-footer d-flex justify-content-center mb-4">
+                                <a href="{{path('app_booking_add', {'id' : table.id})}}" class="btn btn-primary btn-sm px-4 text-black">Réserver</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="pagination d-flex justify-content-center mt-5">
+                    {{ knp_pagination_render(tables) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

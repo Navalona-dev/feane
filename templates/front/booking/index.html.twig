@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation {% endblock %}
+
+{% block body %}
+{% set booking = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "booking" %}
+        {% set booking = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="booking">
+    <div class="container">
+        <div class="card shadow p-5">
+            <h1 class="text-center fw-bold mb-4"> {{booking.title}} </h1>
+            <p class="text-center mb-4">
+                Avant de faire une réservation d'une table, vous devez d'abord choir une table de votre choix.
+                Nous avont beaucoup de types de table, y compris l'emplacement, le capacité, le prix de reservation.
+                Alors veuillez cliquez sur ce bouton ci dessous pour voir la liste de nos tables disponibles ainsi que leur description,
+                Merci pour votre onfiance
+            </p>
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <a href="{{path('app_table')}}" class="btn btn-booking btn-primary btn-sm text-black" style="width: 100%;">Voir la liste de tables</a>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

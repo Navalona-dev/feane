@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if app.request.attributes.get('_route') == "app_testimonial_add" %} Nouveau Temoingnage {% else %} Modification Témoignage {% endif %} {% endblock %}
+
+{% block body %}
+
+{% set new = '' %}
+{% set edit = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "new-testimonial" %}
+        {% set new = homePage %}
+    {% endif %}
+    {% if homePage.label == "edit-testimonial" %}
+    {% set edit = homePage %}
+{% endif %}
+{% endfor %}
+
+<section class="add-testimonial">
+    <div class="container">
+        {% if app.request.attributes.get('_route') == "app_testimonial_add" %}
+        <h1 class="text-center fw-bold mb-4"> {{new.title}} </h1>
+        <div class="text-center mb-5">
+            {{new.description|raw}}
+        </div>
+        {% else %}
+        <h1 class="text-center fw-bold mb-4"> {{edit.title}} </h1>
+        <div class="text-center mb-5">
+            {{edit.description|raw}}
+        </div>
+        {% endif %}
+        <div class="add-testimonial-form">
+            <div class="row">
+                <div class="col-xl-3 col-lg-1 col-md-12 col-sm-12"></div>
+                <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12">
+                    <div class="card shadow p-5">
+                        {{form_start(form)}}
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Votre témoignage à propos de nos services</label>
+                                <span class="error"> {{form_errors(form.comment)}} </span>
+                                <textarea class="ckeditor"></textarea>
+                                {{form_widget(form.comment)}}
+                            </div>
+                            <div class="form-group mb-4">
+                                <button type="submit" class="btn btn-primary btn-testimonial btn-sm text-black" style="width: 100%;">
+                                    {% if app.request.attributes.get('_route') == "app_testimonial_add" %}
+                                        Envoyer le témoignage
+                                    {% else %}
+                                        Modifier Témoignage
+                                    {% endif %}
+                                </button>
+                            </div>
+                        {{form_end(form)}}
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-1 col-md-12 col-sm-12"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

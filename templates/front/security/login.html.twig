@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<section class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{message}}
+                    </div>
+                {% endfor %}
+                <div class="card shadow px-5 py-5 text-white">
+                    <h4 class="text-center mb-4 fw-bold fs-1">
+                        Connectez-Vous
+                    </h4>
+                    {{form_start(form)}}
+        
+                        {% if error %}
+                            <div class="alert alert-danger">Une erreur s'est produit, utilisateur ou mot de passe invalid</div>
+                        {% endif %}
+                    
+                        <div class="form-group mb-4">
+                            <label class="mb-2">Adrese e-mail</label>
+                            {{form_widget(form.email)}}
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="mb-2">Mot de passe</label>
+                            <div class="input-group mb-4">
+                                {{ form_widget(form.password, {'attr': {'class': 'form-control password-input'}}) }}
+                                <input type="text" style="display: none;" class="form-control form-control-md password-text" readonly>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="border-left: none; border-radius: 0 0.2rem 0.2rem 0; background-color: #fff;">
+                                        <i class="fas fa-eye toggle-text" style="cursor: pointer;height: 24px; padding-top: 5px;"></i>
+                                        <i class="fas fa-eye-slash toggle-password" style="cursor: pointer;height: 24px; padding-top: 5px; display: none;"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+        
+                        <button type="submit" class="btn btn-primary btn-md text-black mb-4 btn-auth" style="width: 100%;">Connexion</button>
+                    
+                        <div class="d-flex justify-content-center mb-4">
+                            <a style="font-size: 14px;" class="text-white" href="{{path('forgotten_password_user')}}">Mot de passe oublié</a>
+                        </div>
+                    
+                        <div class="d-flex flex-wrap align-items-center justify-content-center">
+                            <p class="mb-0 me-2 mb-3">Vous n'avez pas de compte</p>
+                            <a href="{{path('app_inscription')}}" style="font-size: 13px;" class="btn btn-outline-primary mb-3 btn-sm px-3 text-white btn-outline-auth"> Créer nouveau compte </a>
+                        </div>
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}

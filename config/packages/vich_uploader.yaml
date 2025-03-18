@@ -1,0 +1,18 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        admin_images: 
+            uri_prefix: '%app.path.admin_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.admin_images%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+
+        user_images: 
+            uri_prefix: '%app.path.user_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.user_images%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+
+        homePage_images: 
+            uri_prefix: '%app.path.homePage_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.homePage_images%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer

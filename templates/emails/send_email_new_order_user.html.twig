@@ -1,0 +1,49 @@
+<p class="fw-bold">Chère {{ user.lastName }} {{ user.firstName|upper }}</p> </br>
+<p> Nous sommes ravis de vous informer que votre commande a bien été enregistrée avec succès:</p>
+<p> Date : {{dateOrder|date('d-m-Y')}} </p>
+<p>Transporteur : {{order.carrierName}} </p>
+<p>Prix de livraison : {{(order.carrierPrice / 100)|number_format(2, ',', '.')}} € </p>
+<p>Adresse de livraison : {{order.delivery|raw}} </p>
+{% set isPaidNo = 'Non Payé' %}
+{% set isPaidYes = 'Payé' %}
+
+<p> {% if order.isPaid == 0 %} {{isPaidNo}} {% else %} {{isPaidYes}} {% endif %} </p>
+<p><strong> Les produits à livrés : </strong></p>
+<div class="row">
+    {% set total = 0 %}
+    {% for product in order.orderDetails %}
+        {% set total = total + product.total %}
+    {% endfor %}
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"></div>
+        {% for product in order.orderDetails %}
+            {{product.product}} <br/>
+        {% endfor %}
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+        {% for product in order.orderDetails %}
+            {{(product.price / 100)|number_format(2, ',', '.')}} € <br/>
+        {% endfor %}
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+        {% for product in order.orderDetails %}
+            {{product.quantity}} <br/>
+        {% endfor %}
+    </div>
+</div>
+<p><strong>Total : </strong> {{((total + order.carrierPrice) / 100)|number_format(2, ',', '.')}} € </p>
+<p>
+    Pour valider votre commande veuillez cliquez sur ce lien 
+    <a href="{{ absolute_url(path('confirmation_commande', {token: token})) }}">Valider ma commande</a>
+</p>
+<p>
+    Veuillez prendre note de cette date dans votre agenda et 
+    assurez-vous d'être présent à l'heure indiquée. 
+    Si vous avez des questions ou besoin d'informations supplémentaires, 
+    n'hésitez pas à nous contacter.
+</p>
+<p> Nous vous remercions pour votre confiance et nous sommes impatients de vous accueillir à votre table. </p>
+<a href="{{ url|raw }}">Voir la commande</a>
+<p>
+    {{order.qrCode|raw}}
+</p>
+<p> Cordialement </p>
+<p> L'équipe Feane </p>

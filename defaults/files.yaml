@@ -1,0 +1,24 @@
+public/uploads/homePage:
+  hero-bg.jpg: public/assets/images/hero-bg.jpg
+  o1.jpg: public/assets/images/o1.jpg
+  o2.jpg: public/assets/images/o2.jpg
+  about-img.png: public/assets/images/about-img.png
+  #bg-1.jpeg: public/assets/images/bg-1.jpeg
+
+public/uploads/produits:
+  f1.png: public/assets/images/f1.png  
+  f2.png: public/assets/images/f2.png  
+  f3.png: public/assets/images/f3.png  
+  f4.png: public/assets/images/f4.png  
+  f5.png: public/assets/images/f5.png  
+  f6.png: public/assets/images/f6.png  
+  f7.png: public/assets/images/f7.png  
+  f8.png: public/assets/images/f8.png  
+  f9.png: public/assets/images/f9.png  
+
+public/uploads/tables:
+  table1.jpeg: public/assets/images/table1.jpeg  
+  table2.jpeg: public/assets/images/table2.jpeg  
+  table3.jpeg: public/assets/images/table3.jpeg  
+  #table_3.jpg: public/assets/images/table_3.jpg  
+  #table-2.jpg: public/assets/images/table-2.jpg  

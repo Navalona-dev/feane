@@ -1,0 +1,42 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}Feane - Modification adresse mail {% endblock %}
+{% block content_title %} {% endblock %}
+
+
+{% block main %}
+
+<section class="reception-edit-profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="card shadow p-5">
+                    {{form_start(form)}}
+                        <h3 class="text-center mt-1 mb-5 pb-1 fs-3 fw-bold title">Modification Adesse E-mail</h3>
+        
+                        <div class="form-group mb-3">
+                            <label class="mb-2" for="">Nouveau adresse e-mail</label>
+                            <span class="error"> {{form_errors(form.email)}} </span>
+                            {{form_widget(form.email)}}
+                        </div>
+        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary mb-3" type="submit" style="width: 100%;">Modifier</button>
+                            <a href="{{path('app_admin_mon_profile')}}" class="btn btn-secondary" style="width: 100%;">Retour</a>
+                        </div>
+                        
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+        </div>
+        
+    </div>
+  </section>
+
+{% endblock %}
+
+
+
+

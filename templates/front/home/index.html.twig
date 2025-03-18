@@ -1,0 +1,227 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block body %}
+
+    {% set home = '' %}
+
+    {% set menu = '' %}
+
+    {% set about = '' %}
+
+    {% set customer = '' %}
+
+    {% for homePage in homePages %}
+        {% if homePage.label == "home_front" %}
+            {% set home = homePage %}
+        {% endif %}
+        {% if homePage.label == "home_front_menu" %}
+            {% set menu = homePage %}
+        {% endif %}
+        {% if homePage.label == "home_front_about" %}
+            {% set about = homePage %}
+        {% endif %}
+        {% if homePage.label == "home_front_avis" %}
+            {% set customer = homePage %}
+        {% endif %}
+    {% endfor %}
+<section id="slide" style="background-image: url({{vich_uploader_asset(home, 'backgroundFile')}});">
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for index, slide in home.homePageBlock %}
+            <div class="carousel-item {% if index == 0 %} active {% endif %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12">
+                            <div class="detail-box text-white">
+                                <h1 > {{slide.title}} </h1>
+                                {{slide.description|raw}}
+                            </div>
+                            <div class="btn-box">
+                                <a href="{{path('app_produit')}}" class="btn btn-primary text-black btn-slide px-3"> {{slide.homePageBlockButton}} </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br> <br> <br> <br>
+
+        <div class="list-slide">
+            <ol class="carousel-indicators">
+            {% for index, slide in home.homePageBlock %}
+                <li data-target="#carouselExampleAutoplaying" data-slide-to="{{index}}" class="{% if index == 0 %} active {% endif %} "></li>
+            {% endfor %}    
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="menu-offert">
+    <div class="container">
+        <div id="offert">
+            <div class="row">
+                {% for produit in products %}
+                <div class="col-md-7 col-lg-6">
+                    <div class="box">
+                        <div class="offert-img">
+                            <img src="{{ asset('uploads/produits/' ~ produit.image) }}">
+                        </div>
+                        <div class="offert-content">
+                            <h2 class="fw-bold fs-3"> {{produit.textSpecial}} </h2>
+                            <h3><span class="mr-2"> {{produit.reduction}} </span>off</h3>
+                            <a href="{{path('app_cart_add', {'id' : produit.id})}}" class="btn btn-primary btn-offert text-black"> Commander <i class="fa fa-shopping-cart ml-3"></i> </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+    
+            </div>
+        </div>
+
+        <div class="menu mb-5" id="menu">
+            <div class="menu-title">
+                <h1 class="fw-bold mb-4 fs-1">  {{menu.title}} </h1>
+                <p class="text-center mb-5"> {{menu.description}} </p>
+              </div>
+              <div class="row mt-3 mb-4">
+                <div class="col-lg-12 d-flex justify-content-center">
+                  <ul id="menu-filters">
+                    <li data-filter="*" class="menu-link active">All</li>
+                    {% for menu in menuResto %}
+                        <li data-filter="filter-{{menu.name}}" class="menu-link" > {{menu.name}} </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                {% for produit in produits %}
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 card-col mb-4" data-menu="filter-{{produit.menuRestaurant.name}}">
+                    <div class="card text-white pb-4">
+                        <div class="card-img d-flex justify-content-center pt-4 mb-4 pb-4">
+                            <img src="{{ asset('uploads/produits/' ~ produit.image) }}" alt="">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="fw-bold"> {{produit.title}} </h3>
+                            <p class="produit-description"> {{produit.description|raw}} </p>
+                            <p class="produit-price mt-5 fs-4"> {{(produit.price / 100)|number_format(2, ',', '.')}} € </p>
+                            <a href="{{path('app_cart_add', {'id' : produit.id})}}">
+                                <i class="fas fa-shopping-cart produit-cart text-black"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="d-flex justify-content-center mt-4">
+                <a href="{{path('app_produit')}}" class="btn btn-primary btn-menu px-5 text-black btn-md" id="btn-menu"> {{menu.homePageButton}} </a>
+              </div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm -12 mb-5">
+                <div class="about-img">
+                    <img src="{{vich_uploader_asset(about, 'imageFile')}}">
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm -12 mb-5">
+
+                <div class="about-content">
+                
+                    <h1> {{about.title}} </h1>
+                    <div class="less">
+                        {{about.description|slice(0,300)|raw}} ...
+                    </div>
+
+                    <div class="more">
+                        {{about.description|raw}}
+                    </div>
+
+                    <button id="readMore" class="btn btn-primary btn-about px-5 text-black mt-4">Lire plus</button>
+                    <button id="readLess" class="btn btn-primary btn-about px-5 text-black mt-4">Lire moins</button>
+                    <a href="{{path('app_about')}}" id="history" class="btn btn-primary btn-about px-5 text-black mx-4 mt-4">Historique</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="customer pt-5 pb-5">
+    <div class="container">
+      <div class="text-center mb-5 title">
+        <h2 class="fw-bold mb-4 "> {{customer.title}} </h2>
+        {{customer.description|raw}}
+      </div>
+      <div class="carousel-wrap row ">
+        <div class="owl-carousel customer_owl-carousel">
+          {% for testimonial in testimonials %}
+          <div class="item">
+            <div class="box">
+              <div class="detail-box text-white p-4 custom-heigth">
+                <div class="description mb-4">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                            <div class="img-box mt-4">
+                                {% if testimonial.user.profile is not empty %}
+                                <img class="" src="{{vich_uploader_asset(testimonial.user, 'imageFile')}}" alt="">
+                                {% else %}
+                                <img class="" src="{{ asset('uploads/homePage/user.png') }}" alt="">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-10 col-lg-10 col-md-10 col-sm-10">
+                            <h6 class="fw-bold mb-3">
+                                {{testimonial.user.lastName}} {{testimonial.user.firstName|upper}}
+                            </h6>
+                            <p>
+                            {{testimonial.createdAt|date('d-m-Y à H:i')}}
+                            </p>
+                          {% if testimonial.comment|length > 50 %}
+                              <div class="minus-testimonial"> 
+                                {{testimonial.comment|slice(0,50)|raw}} ... 
+                                <span class="link-plus text-warning">Lire plus</span> 
+                              </div>
+                              <div class="plus-testimonial"> 
+                                {{testimonial.comment|raw}} 
+                                <span class="link-minus text-warning">Lire moins</span> 
+                              </div>
+                          {% else %}
+                              <p> {{testimonial.comment|raw}} </p>
+                          {% endif %}
+                        </div>
+                    </div>
+              </div>
+                
+              </div>
+              
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <a href="{{path('app_testimonial')}}" class="text-black btn btn-testimonial btn-primary btn-sm px-5 btn-show-testimonial">Afficher plus de témoignage</a>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="/assets/js/menu.js"></script>
+       
+{% endblock %}

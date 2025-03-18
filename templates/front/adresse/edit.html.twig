@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mise à jour adresse{% endblock %}
+
+{% block body %}
+{% set add = '' %}
+{% for homePage in homePages %}
+    {%  if homePage.label == 'add-adresse' %}
+        {% set add = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="form-adresse">
+    <div class="container">
+        <h1 class="text-center fw-bold fs-1 mb-4"> {{add.title}} </h1>
+        <div class="text-center mb-5">
+            {{add.description|raw}}
+        </div>
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="adresse-form card shadow p-5">
+                    {{ include('front/adresse/_form.html.twig') }}
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+        </div>
+       
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+{% set cart = "" %}
+{% for homePage in homePages %}
+    {% if homePage.label == "cart" %}
+        {% set cart = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="cart">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{cart.title}} </h1>
+        <div class="text-center mb-5">
+            {{cart.description|raw}}
+        </div>
+        {% if app.user %}
+            {% if app.user.isVerified == 1 %}
+                {% if dataCart is empty %}
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="card shadow p-5">
+                                <h3 class="text-center fw-bold fs-3 mb-4">Panier vide</h3>
+                                <p>Votre panier est vide, veuillez cliquer sur le bouton ci-dessous pour ajouter un produit</p>
+                                <a href="{{path('app_produit')}}" class="btn btn btn-sm btn-cart">Choisir un produit</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+                    </div>
+                {% else %}
+                    <div class="card shadow p-5">
+                        <div class="row mb-5">
+                            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 mb-3">
+                                <a href="{{path('app_produit')}} " class="btn btn-primary btn-cart text-black btn-sm mx-2 px-4" style="width: 100%;">Continuer mes achats</a>
+                            </div>
+                            <div class="col-xl-6 col-lg-4 col-md-1 col-sm-12"></div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                <a href=" {{path('app_cart_supprimer')}} " class="btn btn-danger btn-sm mx-2 px-4" style="width: 100%;">
+                                    Supprimer tous mes paniers
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <div class="table-cart">
+                            <table class="table table-striped">
+                                <thead class="">
+                                    <tr class="text-nowrap text-center">
+                                        <th>Image</th>
+                                        <th>Produits</th>
+                                        <th>Quantité</th>
+                                        <th>Prix</th>
+                                        <th>Total</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                {% for element in dataCart %}
+                                    <tr class="text-nowrap text-center">  
+                                        <td>
+                                            <img
+                                                src="{{ asset('uploads/produits/' ~ element.produit.image) }}"
+                                                alt=""
+                                                style="height: 50px; width: 50px; border-radius: 100%;"
+                                            >
+                                        </td>
+                                        <td> {{element.produit.menuRestaurant.name}} ({{element.produit.title}}) </td>
+                                        <td> {{element.quantity}} </td>
+                                        <td> {{(element.produit.price / 100)|number_format(2, ',', '.')}} € </td>
+                                        <td> {{((element.produit.price / 100) * element.quantity)|number_format(2, ',', '.')}} € </td>
+                                        <td>
+                                            <a href=" {{path('app_cart_add', {'id' : element.produit.id})}} " class="mx-2 text-primary">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </a>
+
+                                            <a href=" {{path('app_cart_remove', {'id' : element.produit.id})}} " class="mx-2 text-warning">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </a>
+
+                                            <a href="{{path('app_cart_delete', {'id' : element.produit.id})}} " class="mx-2 text-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Votre panier est vide</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                           
+                        </table>
+                        <div class="row mt-4 mb-5">
+                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12"></div>
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                {% set total = 0 %}
+                                {% set GrandTotal = 0 %}
+                                {% for element in dataCart %}
+                                    {% set total = (element.produit.price / 100) * element.quantity %}
+                                    {% set GrandTotal = GrandTotal + total %}
+                                {% endfor %}
+
+                                <p style="display: flex; justify-content: end;"><span style="margin-right: 20px;" class="fw-bold">Nombre de produits : </span> {{dataCart|length}} </p>
+                                <p style="display: flex; justify-content: end;"><span style="margin-right: 20px;" class="fw-bold">Total de mon panier : </span> {{GrandTotal|number_format(2, ',', '.')}} € </p>     
+                                    <a href=" {{path('app_order')}} " class="btn btn-primary btn-cart btn-sm mx-2 px-4 text-center text-black" style="width: 100%;">Valider mes paniers</a>
+                                   
+                            </div>
+                        </div>
+                        </div>
+                       
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="card shadow p-5">
+                            <h3 class="text-center fw-bold mb-4">Compte n'est pas activé</h3>
+                            <p>Désolé, vous ne pouvez pas faire cette demande parce que votre compte n'est pas activé, veuillez d'abord activer votre compte en cliquant ce bouton </p>
+                            <a href="{{path('reset_activation_user')}}" class="btn-cart text-black btn btn-primary btn-sm">Envoyer mail d'activation</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+                </div>
+                
+            {% endif %}
+        {% else %}
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                
+                <div class="card shadow p-5">
+                    <h3 class="text-center fw-bold mb-4">Compte n'est pas connecté!!</h3>
+                    <p>Désolé, vous ne pouvez pas faire cette demande,Veuillez vous connecter en cliquand le bouton ci-dessous</p>
+                    <a href="{{path('app_login_front')}}" class="btn-cart text-black  btn btn-primary btn-sm">Se Connecter</a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12"></div>
+        </div>
+            
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

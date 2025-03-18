@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver - {{table.number}} {% endblock %}
+
+{% block body %}
+{% set booking = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "booking" %}
+        {% set booking = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="booking">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{booking.title}} </h1>
+        <div class="text-center mb-5">
+            {{booking.description|raw}}
+        </div>
+        <div class="booking-content">
+            <div class="row">
+                <div class="col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+                <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+                    <div class="card shadow p-5">
+                        {% if app.user.isVerified == 1 %}
+                        <p class="mb-4 text-center">
+                            Vous êtes sur le point de réserver la <strong> {{table.number}} ({{table.type}})</strong>
+                            , dites nous tout, on s'occupe du reste !!
+                         </p>
+                         {% for message in app.flashes('danger') %}
+                            <div class="alert alert-danger">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+
+                         {{form_start(form)}}
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Date d'arrivée</label>
+                                <span class="error"> {{form_errors(form.dateBooking)}} </span>
+                                {{form_widget(form.dateBooking)}}
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="" class="mb-2">Heure d'arrivée</label>
+                                <span class="error"> {{form_errors(form.bookingHour)}} </span>
+                                {{form_widget(form.bookingHour)}}
+                            </div>
+                        
+                            <div class="form-group mb-4">
+                                <p class="fw-bold">Coût de réservation : <span id="cout-reservation"> {{(table.coutReservation / 100)|number_format(2, ',', '.')}} €</span></p>
+                            </div>
+        
+                            <div class="form-goup mb-4">
+                                <span class="error"> {{form_errors(form.message)}} </span>
+                                <textarea name="" id="" cols="30" rows="10" class="ckeditor"></textarea>
+                                {{form_widget(form.message)}}
+                            </div>
+                           
+                            <div class="form-group mb-4">
+                                <button type="submit" class="btn btn-primary btn-booking text-black" style="width: 100%;">Réserver la table</button>
+                            </div>
+                         {{form_end(form)}}
+                         {% else %}
+                         <h4 class="text-center fw-bold mb-4">Compte n'est pas activé!!!</h4>
+                         <p class="text-center mb-4">
+                            Vous ne pouvez pas faire cette demande, votre compte n'est pas encore activé,
+                            veuilez consulter votre boite e-mail pour activer votre compte ou consultez 
+                            votre spam si vous n'avez pas trouvé le mail que nous vous avons envoyé,
+                            ou cliquez sur ce bouton pour renvoyer le mail, merci pour votre confiance
+                         </p>
+                         <a href="{{path('reset_activation_user')}}" class="text-black btn btn-booking btn-primary btn-sm">Renvoyer le mail</a>
+                         {% endif %}
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

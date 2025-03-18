@@ -1,0 +1,9 @@
+<h1>Activation compte</h1>
+<p>Bonjour {{ admin.lastName }} {{admin.firstName|upper}},</p>
+<p>Votre inscription sur le site Feane est à valider en cliquant sur le lien ci-dessous :</p>
+<p>
+    <a href="{{ absolute_url(path('verify_admin', {token: token})) }}">Activer compte</a>
+</p>
+<p> Ce lien expirera dans 3 heures </p>
+<p>Cordialement</p>
+<p>L'équipe Feane</p>

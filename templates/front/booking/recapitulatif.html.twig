@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservations {% endblock %}
+
+{% block body %}
+{% set recap = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "recap-booking" %}
+        {% set recap = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="recap-booking">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{recap.title}} </h1>
+        <div class="text-center mb-5">
+            {{recap.description|raw}}
+        </div>
+        <div class="recap-content">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                    <div class="recap-table">
+                        <table class="table">
+                            <thead>
+                                <tr class="text-center text-nowrap">
+                                    <th>Numéro de table</th>
+                                    <th>Type de table</th>
+                                    <th>Capacité</th>
+                                    <th>Emplacement</th>
+                                    <th>Note speciale</th>
+                                    <th>Coût de réservation</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td> {{booking.tableRestaurant.number}} </td>
+                                    <td> {{booking.tableRestaurant.type}} </td>
+                                    <td class="text-nowrap"> {{booking.tableRestaurant.capacity}} </td>
+                                    <td> {{booking.tableRestaurant.emplacement}} </td>
+                                    <td> {{booking.tableRestaurant.noteSpecial}} </td>
+                                    <td> {{(booking.tableRestaurant.coutReservation / 100)|number_format(2, ',', '.')}} € </td>
+                                    <td> {{booking.tableRestaurant.description}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <div class="recap-info bg-light px-4 pt-4 pb-5">
+                        <span id="stripe_public_key" data-stripe="{{stripe_public_key}}"></span>
+
+                        <p><span class="fw-bold">Date : </span> {{booking.dateBooking|date('d-m-Y')}} </p>
+                        <p><span class="fw-bold">Heure d'arrivée : </span> {{booking.bookingHour|date('H:i')}} </p>
+                        <span id="reference-booking" data-reference="{{ booking.reference }}"></span>
+                        <span id="id-booking" data-identification="{{ booking.id }}"></span>
+                        <a id="checkout-button-booking" class="btn btn-primary btn-sm btn-recap-booking text-black px-4" style="width: 100%;">Payer | {{(booking.tableRestaurant.coutReservation / 100)|number_format(2, ',', '.')}} €  </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

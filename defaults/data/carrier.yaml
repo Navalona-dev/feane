@@ -1,0 +1,24 @@
+carrier1:
+  name: UberEats
+  price: 2030
+  description: <p>UberEats est un service de livraison de repas à la demande qui travaille avec des restaurants locaux pour livrer des repas aux clients à leur domicile ou au bureau.</p>
+
+carrier2:
+  name: DoorDash
+  price: 2050
+  description: <p>DoorDash est une plateforme de livraison de repas qui collabore avec divers restaurants pour livrer de la nourriture à des clients à travers une application mobile.</p>
+
+carrier3:
+  name: Grubhub
+  price: 3020
+  description: <p>Grubhub est un autre service de livraison de repas qui relie les consommateurs à des restaurants locaux pour la livraison à domicile. Ils proposent également des services de commande en ligne et de paiement.</p>
+
+carrier4:
+  name: Postmates
+  price: 2050
+  description: <p>Postmates offre une variété de services de livraison, notamment la livraison de repas, d'épicerie et d'autres produits locaux. Ils sont connus pour leur flexibilité dans les types de produits livrés.</p>
+
+carrier5:
+  name: Deliveroo
+  price: 3000
+  description: <p>Deliveroo est une plateforme de livraison de repas qui travaille avec des restaurants haut de gamme pour livrer des repas de qualité directement aux clients. Ils se concentrent souvent sur des zones urbaines.</p>

@@ -1,0 +1,49 @@
+table1:
+  number: Table 1
+  capacity: 2 Personnes
+  emplacement: Près de la fenêtre avec vue sur le jardin.
+  type: Table Romantique près de la Fenêtre
+  description: Une table intime située près de la fenêtre, idéale pour les couples.
+  noteSpecial: Bougies allumées sur demande.
+  coutReservation: 2000
+  image: table1.jpeg
+
+table2:
+  number: Table 2
+  capacity: 8 Personnes
+  emplacement: Salle à manger principale.
+  type: Table Familiale
+  description: Une grande table parfaite pour les familles ou les groupes.
+  noteSpecial: Chaises hautes disponibles pour les enfants.
+  coutReservation: 2000
+  image: table2.jpeg
+
+table3:
+  number: Table 3
+  capacity: 2 Personnes
+  emplacement: Bar
+  type: Table de Bar
+  description: Une table haute idéale pour des repas décontractés.
+  noteSpecial: Parfait pour un apéritif ou un dîner rapide.
+  coutReservation: 2000
+  image: table3.jpeg
+
+table4:
+  number: Table 4
+  capacity: 4 Personnes
+  emplacement: Près de la fenêtre.
+  type: Table Extérieure
+  description: Une table en terrasse pour profiter du plein air.
+  noteSpecial: Disponible par beau temps.
+  coutReservation: 2000
+  image: table_3.jpg
+
+table5:
+  number: Table 5
+  capacity: 30 Personnes
+  emplacement: Salle privée.
+  type: Table de Groupe Privée
+  description: Une salle privée pour les grands groupes et les événements spéciaux.
+  noteSpecial: Écran de projection disponible pour les présentations.
+  coutReservation: 20000
+  image: table-2.jpg

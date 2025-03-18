@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de mes commandes{% endblock %}
+
+{% block body %}
+{% set liste = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "liste-commande" %}
+        {% set liste = homePage %}
+    {% endif %}
+{% endfor %}
+
+<section class="liste-commande">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{liste.title}} </h1>
+        <div class="text-center mb-5">
+            {{liste.description|raw}}
+        </div>
+        <div class="liste-commande-content">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-danger">
+                    {{message}}
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="order-table shadow p-5">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="text-center text-nowrap">
+                                <th>Date de commandes</th>
+                                <th>Transporteurs / Prix</th>
+                                <th>Adresse de livraison</th>
+                                <th>Produits</th>
+                                <th>Prix</th>
+                                <th>Quantités</th>
+                                <th>Total à payer</th>
+                                <th>Est-il payé?</th>
+                                <th>QrCode</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr class="text-center text-nowrap ">
+                                <td class="align-middle"> {{order.createdAt|date('d-m-Y')}} </td>
+                                <td class="align-middle"> {{order.carrierName}} / {{(order.carrierPrice / 100)|number_format(2, ',', '.')}} € </td>
+                                <td class="align-middle"> {{order.delivery|raw}} </td>
+                                <td class="align-middle">
+                                    {% for detail in order.orderDetails %}
+                                        - {{detail.product}} <br/>
+                                    {% endfor %}
+                                </td>
+                                <td class="align-middle">
+                                    {% for detail in order.orderDetails %}
+                                        {{(detail.price / 100)|number_format(2, ',', '.')}} € <br/>
+                                    {% endfor %}
+                                </td>
+                                <td class="align-middle">
+                                    {% for detail in order.orderDetails %}
+                                        {{detail.quantity}} <br/>
+                                    {% endfor %}
+                                </td>
+                                <td class="align-middle">
+                                {% set grandTotal = 0 %}
+                                    {% for detail in order.orderDetails %}
+                                        {% set grandTotal = grandTotal + detail.total %}
+                                    {% endfor %}
+                                    {{((grandTotal+ order.carrierPrice ) / 100)|number_format(2, ',', '.')}} €
+                                </td>
+                                <td class="align-middle">
+                                    {% set isPaidYes = 'Oui' %}
+                                    {% set isPaidNo = 'Non' %}
+                                    {% if order.isPaid == 0 %}
+                                        {{isPaidNo}}
+                                    {% else %}
+                                        {{isPaidYes}}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if order.isPaid == 1 and order.isConfirmed == 1 %}
+                                    
+                                    {{order.qrCode|raw}}
+                                    
+                                    {% else %}
+                                        Aucun qrCode
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle">
+                                    <span id="reference" data-reference="{{ order.reference }}"></span>
+                                    {% if order.isPaid == 0 %}
+                                        <a id="checkout-button" class="btn btn-order btn-sm px-3">Payé</a>
+                                    {% endif %}
+                                    {% if order.isPaid == 1 and order.isConfirmed == 0 %}
+                                        <a href="{{path('confirmation_commande', {'token' : order.resetToken})}}" class="text-black btn btn-primary btn-order btn-sm px-3">Valider la commande</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="pagination d-flex justify-content-center mt-5">
+                        {{ knp_pagination_render(orders) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

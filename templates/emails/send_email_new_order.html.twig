@@ -1,0 +1,39 @@
+<p class="fw-bold">Chère {{admin.lastName}} {{admin.firstName|upper}} </p> </br>
+<p> 
+    Nous sommes heureux de vous informer qu'une nouvelle commande d'un produit a été fait : 
+</p>
+<p>Client : {{user.lastName}} {{uese.firstName|upper}}</p>
+<p> Date : {{dateOrder|date('d-mY')}} </p>
+<p>Transporteur : {{order.carrierName}} </p>
+<p>Prix de livraison : {{(order.carrierPrice / 100)|number_format(2, ',', '.')}} € </p>
+<p>Adresse de livraison : {{order.delivery|raw}} </p>
+{% set isPaidNo = 'Non Payé' %}
+{% set isPaidYes = 'Payé' %}
+
+<p> {% if order.isPaid == 0 %} {{isPaidNo}} {% else %} {{isPaidYes}} {% endif %} </p>
+<p><strong> Les produits à livrés : </strong></p>
+<div class="row">
+    {% set total = 0 %}
+    {% for product in order.orderDetails %}
+        {% set total = total + product.total %}
+    {% endfor %}
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"></div>
+        {% for product in order.orderDetails %}
+            {{product.product}} <br/>
+        {% endfor %}
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+        {% for product in order.orderDetails %}
+            {{(product.price / 100)[number_format(2, ',', '.')]}} € <br/>
+        {% endfor %}
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+        {% for product in order.orderDetails %}
+            {{product.quantity}} <br/>
+        {% endfor %}
+    </div>
+</div>
+<p><strong>Total : </strong> {{((total + order.carrierPrice) / 100)|number_format(2, ',', '.')}} € </p>
+<p> Veuillez noter cette commande dans votre calendrier et notez bien que les produits seront bien livrés au client. </p>
+<a href="{{ url|raw }}">Voir la commande</a>
+<p> Cordialement </p>
+<p> L'équipe Feane </p>

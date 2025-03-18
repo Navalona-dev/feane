@@ -1,0 +1,398 @@
+config-general:
+  backgroundColor: 
+  backgroundImage:
+  title: 
+  description: 
+  buttonColorHover: '#e69c00'
+  video: 
+  buttonColor: '#ffbe33'
+  homePageButton: 
+  image:
+
+admin_auth:
+  backgroundColor: "#222831"
+  backgroundImage:
+  title: Restaurant de restauration rapide
+  description: <p>Bienvenue dans l'espace d'administration du Restaurant de restauration rapide. Cette section sécurisée vous permet d'exercer un contrôle total sur votre restaurant.</p><p>Connectez-vous en tant qu'administrateur pour gérer les menus, les produits, les employés, les commandes et les données essentielles de votre établissement.</p><p> Optimisez votre fonctionnement, suivez les performances, et assurez une expérience client exceptionnelle grâce à notre outil de gestion administratif convivial.</p><p> Identifiez-vous pour accéder à ces puissantes fonctionnalités et maintenir la qualité de votre service de restauration rapide.</p>
+  buttonColorHover: '#e69c00'
+  video: 
+  buttonColor: '#ffbe33'
+  homePageButton: Nouveau Compte
+  image:
+
+admin_form_login:
+  backgroundColor: 
+  backgroundImage:
+  title: Connexion à l'administration
+  description: 
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: Connexion
+  image:
+
+header_front:
+  backgroundColor: '#222831'
+  backgroundImage:
+  title: 
+  description: 
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: Commander en ligne
+  image:
+
+home_front:
+  backgroundColor: 
+  backgroundImage: 'hero-bg.jpg'
+  title: 
+  description: 
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+  homePageBlocks:
+    slide1:
+      title: Restaurant de restauration rapide
+      homePageBlockButton: Commander maintenant
+      image: 
+      backgroundColor: 
+      description: <p>Bienvenue au Restaurant de restauration rapide, l'endroit où les saveurs rapides rencontrent la satisfaction instantanée. Notre menu varié vous offre une sélection alléchante de plats préparés avec soin pour satisfaire toutes vos envies. Que vous recherchiez un hamburger juteux, des frites croustillantes, des tacos savoureux ou des salades fraîches, notre restaurant est l'adresse idéale pour une expérience culinaire rapide et délicieuse.</p>
+      
+    slide2:
+      title: Restaurant de restauration rapide
+      homePageBlockButton: Commander maintenant
+      image: 
+      backgroundColor: 
+      description: <p>Commandez en ligne depuis le confort de votre domicile ou de votre bureau et profitez de notre service de livraison rapide. Nous sommes là pour répondre à vos besoins de restauration rapide, que ce soit pour un déjeuner rapide pendant la pause ou un dîner en famille. Notre équipe dévouée travaille sans relâche pour vous offrir des repas de qualité, préparés avec les meilleurs ingrédients.</p>
+      
+    slide3:
+      title: Restaurant de restauration rapide
+      homePageBlockButton: Commander maintenant
+      image: 
+      backgroundColor: 
+      description: <p>Rejoignez-nous aujourd'hui pour une aventure gustative exceptionnelle. Chez Restaurant de restauration rapide, la satisfaction est au menu, à chaque bouchée.</p>
+
+home_front_menu:
+  backgroundColor: '#f1f2f3'
+  backgroundImage: 
+  title: Nos Menus
+  description: Découvrez notre délicieuse sélection de menus, spécialement conçus pour satisfaire toutes les papilles. Des plats exquis et des saveurs uniques vous attendent dans notre carte variée. Laissez-vous tenter par une expérience gastronomique inoubliable avec 'Nos Menus'.
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: Afficher plus de menu
+  image:
+  homePageBlocks:
+    block1:
+      title: Jeudis Gourmands
+      homePageBlockButton: Commander
+      image: 'o1.jpg'
+      backgroundColor: '#222831'
+      description:
+
+    block2:
+      title: Jours de Pizza
+      homePageBlockButton: Commander
+      image: 'o2.jpg'
+      backgroundColor: '#222831'
+      description:
+
+
+home_front_about:
+  backgroundColor: '#222831'
+  backgroundImage: 
+  title: Nous sommes Feane
+  description: <p>Bienvenue chez Feane, un lieu où la gastronomie rencontre l'élégance. Découvrez une expérience culinaire raffinée avec une touche de créativité dans chaque plat. Notre restaurant est l'endroit idéal pour savourer des mets délicieux dans un cadre élégant.</p><p>Feane, un restaurant dédié à la passion de la cuisine. Notre menu vous propose une sélection exquise de plats préparés avec des ingrédients de qualité supérieure. Joignez-vous à nous pour une expérience gastronomique inoubliable.</p><p>Laissez-nous vous emmener dans un voyage culinaire au cœur de la saveur. Chez Feane, nous vous invitons à explorer notre menu varié qui met en avant des plats innovants, le tout dans un cadre chaleureux et accueillant.</p><p>Feane, où chaque plat raconte une histoire de saveurs et de passion. Notre équipe de chefs talentueux prépare des plats exceptionnels pour satisfaire les palais les plus exigeants. Découvrez le raffinement dans chaque bouchée.</p><p>Découvrez l'excellence culinaire chez Feane. Notre restaurant vous offre une expérience gastronomique exceptionnelle, des plats exquis et une ambiance chaleureuse. Rejoignez-nous pour un voyage gustatif unique.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: Lire plus
+  image: 'about-img.png'
+
+home_front_avis:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Qu'en disent nos clients
+  description: <p>Découvrez ce que nos clients satisfaits ont à dire à propos de leur expérience avec notre entreprise, de nos produits de qualité et de notre service exceptionnel. Leurs commentaires et témoignages témoignent de notre engagement envers l'excellence et de notre dévouement à la satisfaction de nos clients.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: Affichers plus des avis
+  image:
+
+home_front_footer:
+  backgroundColor: '#222831'
+  backgroundImage: 
+  title: 
+  description:
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+  homePageBlocks:
+    block1:
+      title: Nos Contacts
+      homePageBlockButton:
+      image:
+      backgroundColor:
+      description:
+    
+    block2:
+      title: Feane
+      homePageBlockButton:
+      image:
+      backgroundColor:
+      description: Découvrez l'élégance culinaire de Feane, où chaque plat raconte une histoire de saveurs et d'innovation. Notre passion pour la cuisine se reflète dans chaque assiette. Rejoignez-nous pour une expérience gastronomique inoubliable.
+
+    block3:
+      title: Heure d'ouverture
+      homePageBlockButton:
+      image:
+      backgroundColor:
+      description:
+
+about-us:
+  backgroundColor: '#fff'
+  backgroundImage: 'bg-1.jpeg'
+  title: Notre Histoire
+  description: <p>L'histoire de Feane a débuté en 2022 lorsque notre fondateur, passionné de cuisine, a décidé de créer un restaurant unique qui allierait la créativité culinaire à l'art de l'hospitalité. Depuis lors, Feane est devenu un lieu emblématique pour les amateurs de gastronomie à Marseille.</p><p>Au fil des années, nous avons évolué, affinant notre menu pour inclure des plats qui incarnent notre vision de la cuisine contemporaine, tout en restant fidèles à nos racines. Notre équipe de chefs talentueux travaille avec des ingrédients de qualité pour créer des expériences culinaires exceptionnelles.</p><p>Chez Feane, nous croyons que chaque repas devrait être une célébration. Que ce soit pour une occasion spéciale, un repas en famille ou une soirée décontractée entre amis, notre restaurant est conçu pour vous offrir une expérience inoubliable.</p><p>Nous tenons à remercier nos clients fidèles qui nous ont soutenus depuis nos débuts, ainsi que tous ceux qui découvrent Feane pour la première fois. Votre satisfaction est notre plus grande récompense, et nous sommes honorés de partager notre passion pour la cuisine avec vous.</p>
+  buttonColorHover: 
+  video: "https://www.youtube.com/watch?v=MFLVmAE4cqg&pp=ygUVbmF0dXJlIDFtaW4gZGUgZHVyw6ll"
+  buttonColor: 
+  homePageButton: 
+  image:
+
+
+service:
+  backgroundColor: '#222831'
+  backgroundImage: 
+  title: Nos Services
+  description: <p>C'est ici que vous découvrirez l'éventail complet des expériences que nous proposons chez Feane. Explorez notre gamme de services, des dégustations de menus uniques aux cours de cuisine passionnants, en passant par nos options de traiteur et bien plus encore. Laissez-nous vous guider à travers notre monde culinaire et trouvez l'expérience parfaite pour satisfaire vos envies gastronomiques.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+table:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Nos Tables
+  description: <p>Ici, vous découvrirez une variété de tables soigneusement aménagées pour répondre à tous vos besoins. Explorez notre gamme de tables, des tables romantiques pour deux aux grandes tables pour les réunions de groupe. Découvrez l'emplacement, la capacité, et les caractéristiques uniques de chaque table pour planifier votre visite chez Feane. Faites votre choix parmi nos options pour réserver la table parfaite qui correspond à votre occasion spéciale ou à votre préférence personnelle.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+contact:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Contactez-Nous
+  description: <p>L'équipe de Feane est à votre disposition pour répondre à toutes vos questions, prendre vos réservations ou vous assister dans la planification de votre visite. N'hésitez pas à nous contacter par téléphone, e-mail ou en utilisant le formulaire ci-dessous. Nous sommes impatients de vous offrir une expérience exceptionnelle chez Feane.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+cart:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Votre Panier
+  description: <p>Voici la liste de tous les produits que vous avez ajoutés à votre panier. Vous pouvez consulter les articles que vous avez sélectionnés, vérifier les quantités et les prix, et procéder à la commande lorsque vous êtes prêt. C'est ici que vous pouvez gérer votre sélection de produits avant de finaliser votre achat.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+add-adresse:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Création d'une adresse
+  description: <p>Cette section vous permet d'ajouter une nouvelle adresse à votre profil ou à votre compte. Vous pouvez utiliser cette fonction pour enregistrer des adresses de livraison, de facturation ou d'autres lieux importants que vous souhaitez conserver pour une utilisation future. Une fois l'adresse créée, vous pourrez facilement la sélectionner lors de la passation de commandes ou pour d'autres besoins liés à votre compte.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+edit-adresse:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Modification d'une adresse
+  description: <p>Cette section vous permet de mettre à jour et de modifier les informations d'une adresse déjà enregistrée dans votre profil ou compte. Vous pouvez utiliser cette fonction pour mettre à jour des détails tels que le nom, le numéro de rue, le code postal ou tout autre élément nécessaire. Elle est utile lorsque vous avez déménagé ou que des informations de votre adresse ont changé. Après avoir apporté les modifications nécessaires, assurez-vous de sauvegarder les changements pour que vos données restent à jour.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+edit-info:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Modification Information personnelle
+  description: <p>Cette section vous permet de mettre à jour les détails de votre profil utilisateur, tels que votre nom, prénom, numéro de téléphone, ou toute autre information personnelle. Cette fonction est utile pour maintenir vos informations à jour et précises. Après avoir apporté les modifications nécessaires, assurez-vous de les enregistrer pour que votre profil soit à jour.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+edit-mail:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Modification d'une adresse e-mail
+  description: <p>Cette section  vous permet de mettre à jour l'adresse email associée à votre compte. Vous pouvez utiliser cette fonction pour changer votre adresse de contact principale ou pour vous assurer que vous recevez des notifications importantes à la bonne adresse. Une fois que vous avez entré la nouvelle adresse email et confirmé le changement, assurez-vous de vérifier votre nouvelle adresse pour finaliser la mise à jour.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+edit-pwd:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Modification de mot de passe
+  description: <p>Cette section vous permet de changer le mot de passe associé à votre compte. Il est important de mettre régulièrement à jour votre mot de passe pour des raisons de sécurité. Assurez-vous de choisir un mot de passe fort et unique pour protéger votre compte. Après avoir saisi votre ancien mot de passe et défini le nouveau, assurez-vous de le sauvegarder en toute sécurité.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+edit-profile:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Modification Photo de profile
+  description: <p>Cette section vous permet de mettre à jour l'image qui représente votre profil. Vous pouvez télécharger une nouvelle photo pour personnaliser votre compte. Assurez-vous de choisir une photo appropriée et respectant les normes de votre plateforme. Une fois la nouvelle photo sélectionnée, n'oubliez pas de la sauvegarder pour qu'elle apparaisse sur votre profil.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+liste-adresse:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Mes adresses
+  description: <p>Cette section vous permet de gérer et de visualiser toutes les adresses que vous avez enregistrées dans votre compte. Vous pouvez ajouter de nouvelles adresses, les modifier ou les supprimer selon vos besoins. Cette fonctionnalité vous offre un moyen pratique de gérer vos informations d'expédition et de facturation pour vos commandes en ligne ou vos livraisons.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+validation-commande:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Validation de ma commande
+  description: <p>Cette page vous permet de choisir l'adresse de livraison de votre commande et de sélectionner le transporteur de votre choix. Assurez-vous de fournir les informations nécessaires pour que votre commande soit expédiée à la bonne adresse, et choisissez le transporteur qui répond le mieux à vos besoins. Une fois votre choix effectué, vous pourrez finaliser votre commande en toute confiance.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+recap-commande:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Mon récapitulatif
+  description: <p>Cette page vous offre la possibilité de passer en revue tous les détails de votre commande avant de la valider. Assurez-vous que vos articles, votre adresse de livraison et vos informations de paiement sont corrects avant de confirmer votre achat. C'est la dernière étape pour garantir une commande précise et réussie.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+liste-commande:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Mes commandes
+  description: <p>Dans cette section, vous pouvez consulter un récapitulatif de toutes les commandes que vous avez passées sur la plateforme. Vous aurez accès à des détails tels que la date de la commande, les articles achetés, le statut de la livraison ou de la commande, et les informations de paiement. C'est un endroit pratique pour suivre l'historique de vos achats.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+booking:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Réservation d'une table
+  description: <p>Cette page vous offre la possibilité de réserver une table dans notre restaurant. Profitez de cette opportunité pour planifier votre prochaine expérience culinaire chez nous. Choisissez la date, l'heure et le nombre de convives, puis laissez-nous prendre soin du reste. Nous sommes impatients de vous accueillir et de vous offrir une expérience gastronomique inoubliable.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+recap-booking:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Récapitulatif de ma réservation
+  description: <p>Cette page vous offre la possibilité de passer en revue tous les détails de votre réservation avant de la valider. Assurez-vous que votre table,  et vos informations de paiement sont corrects avant de confirmer votre réservation. C'est la dernière étape pour garantir une réservation précise et réussie.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+liste-booking:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Mon Réservations de table
+  description: <p>Cette section vous permet de gérer toutes les réservations de table que vous avez faites dans notre restaurant. Vous pourrez voir la date et l'heure de chaque réservation, le nombre de personnes, le type de table que vous avez choisi, et vous pourrez éventuellement annuler ou modifier vos réservations. C'est un moyen pratique de planifier vos sorties et de vous assurer d'avoir une table prête lorsque vous en avez besoin.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+testimonial:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Témoignages
+  description: <p>Consultez les expériences et les avis de nos clients satisfaits. Découvrez ce que nos clients ont à dire sur nos produits, services et leur parcours avec nous.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+new-testimonial:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Nouveau Témoignage
+  description: <p>Partagez votre expérience récente avec nous ! Publiez votre propre témoignage sur votre expérience avec nos produits ou services. Votre avis compte et peut aider les autres à prendre des décisions éclairées.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+edit-testimonial:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Modification Témoignage
+  description: <p>Vous avez déjà partagé votre expérience avec nous, mais vous souhaitez apporter des ajustements ou des mises à jour à votre témoignage ? Utilisez cette option pour effectuer des modifications à votre témoignage existant. Votre voix continue de compter, et nous vous offrons la possibilité de maintenir votre avis à jour.</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:
+
+liste-testimonial:
+  backgroundColor: '#fff'
+  backgroundImage: 
+  title: Mes Témoignages
+  description: <p>Rétrouvez ici la liste de témoignages que vous avez fait à propos de nos services, vous pouvez aussi apporter une ajustement de votre témoignage s'il y a une chose que vous voulez modifier, alors n'hésitez pas à cliquer sur le bouton modifier pour apporter une modification!!!</p>
+  buttonColorHover: 
+  video: 
+  buttonColor: 
+  homePageButton: 
+  image:

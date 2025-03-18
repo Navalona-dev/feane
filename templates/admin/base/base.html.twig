@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="icon" type="image/png" href="{{ asset('uploads/siteConfig/' ~ favicon) }}">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="../../assets/css/admin.css">
+        <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../assets/plugins/fs/css/all.min.css">
+        {% block stylesheets %}
+
+        {% set bgColor = '' %}
+        {% set btnColor = '' %}
+        {% set btnColorHover = '' %}
+        {% for homePage in homePages %}
+            {% if homePage.label == "admin_auth" %}
+                {% set btnColor = homePage.buttonColor %}
+                {% set btnColorHover = homePage.buttonColorHover %}
+                {% set bgColor = homePage.backgroundColor %}
+            {% endif %}
+        {% endfor %}
+
+        {% if app.request.attributes.get('_route') == 'app_login' or app.request.attributes.get('_route') == 'app_register' %}
+
+          <style>
+            :root {
+                  --background-color: {{ bgColor }};
+                  --button-color: {{ btnColor }};
+                  --button-hover-color: {{ btnColorHover }};
+                }
+
+                
+            body {
+              background-color: var(--background-color) !important;
+            }
+
+            .admin-login .card, .admin-register .card {
+              background-color: var(--background-color) !important;
+              border: 1px solid var(--button-color);
+              color: #fff;
+            }
+
+            .btn-outline-primary {
+              border: 1px solid var(--button-color);
+            }
+
+            .btn-outline-primary:hover {
+              border: 1px solid var(--button-color);
+              background-color: var(--button-color) !important;
+              color: #000 !important;
+            }
+
+            .admin-register input {
+              background-color: #3b4452 !important;
+              border: none !important;
+              color: #fff !important;
+            }
+
+            .error {
+              color: #c50606 !important;
+            }
+
+            .btn-primary {
+              background-color: var(--button-color) !important;
+              border: none;
+            }
+
+            .reset-password .card {
+              margin-top: 150px;
+            }
+
+            .btn-secondary {
+              background-color: var(--background-color);
+              border: none;
+            }
+
+            .btn-secondary:hover {
+              background-color: var(--background-color);
+            }
+
+          </style>
+
+        {% endif %}
+
+        <style>
+           :root {
+                  --background-color: {{ bgColor }};
+                  --button-color: {{ btnColor }};
+                  --button-hover-color: {{ btnColorHover }};
+                }
+
+            .btn-primary {
+              background-color: var(--button-color) !important;
+              border: none;
+            }
+
+        </style>
+
+        {% endblock %}
+
+        
+    </head>
+    <body>
+
+      <main>
+        {% block body %}{% endblock %}
+      </main>
+
+        <script src="../../assets/js/jquery.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/js/popper.min.js"></script>
+        <script src="../../assets/js/admin.js"></script>
+        <script src="../../assets/plugins/fs/js/all.min.js"></script>
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

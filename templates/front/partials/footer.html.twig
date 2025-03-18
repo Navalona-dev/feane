@@ -1,0 +1,50 @@
+{% set footer = '' %}
+
+{% for homePage in homePages %}
+	{% if homePage.label == "home_front_footer" %}
+		{% set footer = homePage %}
+	{% endif %}
+{% endfor %}
+
+<footer id="footer">
+	<div class="container text-white">
+		<div class="row">
+			{% for index, block in footer.homePageBlock %}
+			<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-5">
+				<h2> {{block.title}} </h2>
+				<div class="description">
+					{{block.description}} </br>
+				</div>
+				{% if index == 0 %}
+				<a href=""><i class="fa fa-map-marker contact-icon"></i><span>{{adresse}}</span></a> <br> <br>
+				<a href=""><i class="fa fa-phone contact-icon"></i><span> {{contact}} </span></a> <br> <br>
+				<a href=""><i class="fa fa-envelope contact-icon"></i><span> {{email}} </span></a>
+				{% endif %}
+				{% if index == 1 %}
+					<div class="btn btn-primary btn-share btn-sm px-4 text-black mt-4 mb-4" style="width: 100%;">Suivez Nous Sur :</div>
+					<div class="social-link">
+						{% for social in socialLink %}
+						<a href="{{social.link}}" class="text-black"><i class="{{social.icon}}"></i></a>
+						{% endfor %}
+					</div>
+				{% endif %}
+				{% if index == 2 %}
+					<p>Tous les jours</p>
+					<p>06h 00 - 23h 00</p>
+				{% endif %}
+			</div>
+			{% endfor %}
+			
+		</div>
+
+		<div class="copyright">
+			<p>
+				© <span id="displayYear">2022</span> All Rights Reserved By
+				<a href="https://visco-consulting.com/">VAL IT-SOLUTION CONSULTING</a><br><br>
+				© <span id="displayYear"></span> Distributed By
+				<a href="https://visco-consulting.com/" target="_blank">VISCO</a>
+			</p>
+		</div>
+
+	</div>
+</footer>

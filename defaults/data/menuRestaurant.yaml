@@ -1,0 +1,92 @@
+menu1:
+  name: pizza
+  produits:
+    block1:
+      title: Pizza Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 1500
+      image: f1.png
+      number: 20
+      reduction:
+      textSpecial:
+
+    block2:
+      title: Pizza Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 2090
+      image: f3.png
+      number: 20
+      reduction:
+      textSpecial:
+
+    block3:
+      title: Pizza Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 3012
+      image: f6.png
+      number: 20
+      reduction:
+      textSpecial:
+
+menu2:
+  name: Burger
+  produits:
+    block1:
+      title: Burger Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 2000
+      image: f2.png
+      number: 15
+      reduction: 30%
+      textSpecial: Jeudi Gourmands
+
+    block2:
+      title: Burger Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 1250
+      image: f7.png
+      number: 15
+      reduction:
+      textSpecial:
+
+    block3:
+      title: Burger Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 2033
+      image: f8.png
+      number: 30
+      reduction:
+      textSpecial:
+
+menu3:
+  name: Pasta
+  produits:
+    block1:
+      title: Pasta Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 1050
+      image: f4.png
+      number: 30
+      reduction: 20%
+      textSpecial: Jours de Pasta
+
+    block2:
+      title: Pasta Délicieux
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 1200
+      image: f9.png
+      number: 15
+      reduction:
+      textSpecial:
+
+menu4:
+  name: Fries
+  produits:
+    block1:
+      title: Fries Français
+      description: <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque</p>
+      price: 1230
+      image: f5.png
+      number: 30
+      reduction:
+      textSpecial:

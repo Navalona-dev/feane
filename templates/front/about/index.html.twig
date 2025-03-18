@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A Propos{% endblock %}
+
+{% block body %}
+{% set about = '' %}
+{% set service = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "about-us" %}
+        {% set about = homePage %}
+    {% endif %}
+    {% if homePage.label == "service" %}
+        {% set service = homePage %}
+    {% endif %}
+{% endfor %}
+<section class="about-us">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 video-box d-flex justify-content-center mt-5" style="background-image: url({{vich_uploader_asset(about, 'backgroundFile')}});">
+                <a href="{{about.video}}" class="glightbox play-btn mb-4">
+                </a>
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 mt-5">
+                <div class="about-content">
+                    <h3 class="fw-bold fs-2"> {{about.title}} </h3>
+                    {{about.description|raw}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service py-5">
+    <div class="container px-5">
+        <h1 class="text-center fw-bold mb-5 text-white"> {{service.title}} </h1>
+        <div class="text-center mb-5 text-white">
+            {{service.description|raw}}
+        </div>
+        <div class="liste-service pt-5">
+            <div class="row">
+                {% for service in services %}
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        
+                        <div class=" shadow p-4 text-white liste-service-content mb-5 service-height">
+                            <div class="d-flex justify-content-center ">
+                                <i class="{{service.iconFile}} text-white icon-service"></i>
+                            </div>
+                            <h3 class="text-center fw-bold mb-4 fs-5 mt-5"> {{service.title}} </h3>
+                            <h5 class="text-center mb-4"> {{service.subTitle}} </h5>
+                            {% if service.description|raw|length > 100 %}
+                                <p class="description ">
+                                    <span class="short-description">{{ service.description|raw|slice(0,200) }}</span>
+                                    <span class="dots">...</span>
+                                    <span class="more-description"> {{ service.description|raw }} </span>
+                                </p>
+    
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn-more btn btn-primary btn-sm px-5 text-black"> Lire Plus </button>
+                                    <button class="btn-short btn btn-primary btn-sm px-5 text-black"> Lire Moins </button>
+                                </div>
+    
+                            {% else %}
+                                <p class="description ">{{ service.description|raw }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="pagination d-flex justify-content-center mt-5">
+                    {{ knp_pagination_render(services) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

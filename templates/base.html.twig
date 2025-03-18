@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="icon" type="image/png" href="{{ asset('uploads/siteConfig/' ~ favicon) }}">
+        <title>Feane - {% block title %}{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/plugins/fs/css/all.min.css">
+        <link rel="stylesheet" href="/assets/plugins/owlCarousel/css/owl.carousel.min.css">
+        {% block stylesheets %}
+
+        {% set btnColorGeneral = '' %}
+        {% set btnColorGeneralHover = '' %}
+
+        {% set bgColorHeader = '' %}
+
+        {% set bgColorHome = '' %}
+        
+        {% set bgColorHomeMenu = '' %}
+
+        {% set bgColorHomeBlockMenu = '' %}
+
+        {% set bgColorHomeAbout = '' %}
+
+        {% set bgColorHomeCustomer = '' %}
+
+        {% set bgColorHomeFooter = '' %}
+
+        {% set bgColorHomeService = '' %}
+
+        {% set bgColorHomeTable = '' %}
+
+        {% set bgColorHomeContact = '' %}
+
+        {% set bgColorHomeCart = '' %}
+        
+        {% for homePage in homePages %}
+        {% if homePage.label == "config-general" %}
+                {% set btnColorGeneral = homePage.buttonColor %}
+                {% set btnColorGeneralHover = homePage.buttonColorHover %}
+            {% endif %}
+
+            {% if homePage.label == "header_front" %}
+                {% set bgColorHeader = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "home_front" %}
+                {% set bgColorHome = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "home_front_menu" %}
+                {% set bgColorHomeMenu = homePage.backgroundColor %}
+                {% for block in homePage.homePageBlock %}
+                    {% set bgColorHomeBlockMenu = block.backgroundColor %}
+                {% endfor %}
+            {% endif %}
+
+            {% if homePage.label == "home_front_about" %}
+                {% set bgColorHomeAbout = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "home_front_avis" %}
+                {% set bgColorHomeCustomer = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "home_front_footer" %}
+                {% set bgColorHomeFooter = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "service" %}
+                {% set bgColorHomeService = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "table" %}
+                {% set bgColorHomeTable = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "contact" %}
+                {% set bgColorHomeContact = homePage.backgroundColor %}
+            {% endif %}
+
+            {% if homePage.label == "cart" %}
+                {% set bgColorHomeCart = homePage.backgroundColor %}
+            {% endif %}
+
+        {% endfor %}
+
+        <style>
+            :root {
+                  --button-color-general: {{ btnColorGeneral }};
+                  --button-color-hover-general: {{ btnColorGeneralHover }};
+
+                  --background-color-header: {{ bgColorHeader }};
+
+                  --background-color-home: {{ bgColorHome }};
+
+                  --background-color-home-menu: {{ bgColorHomeMenu }};
+                  --background-color-home-block-menu: {{ bgColorHomeBlockMenu }};
+
+                  --background-color-home-about: {{ bgColorHomeAbout }};
+
+                  --background-color-home-customer: {{ bgColorHomeCustomer }};
+
+                  --background-color-home-footer: {{ bgColorHomeFooter }};
+
+                  --background-color-service: {{ bgColorHomeService }};
+
+                  --background-color-table: {{ bgColorHomeTable }};
+
+                  --background-color-contact: {{ bgColorHomeContact }};
+
+                  --background-color-cart: {{ bgColorHomeCart }};
+                }
+
+                .owl-nav button i {
+                    color: var(--button-color-general);
+                }
+
+                .owl-nav button i:hover {
+                    color: var(--button-color-hover-general);
+                }
+
+                /*PAGINATION*/
+
+                .active>.page-link, .page-link.active {
+                    background-color: var(--button-color-general) !important;
+                    border: 1px solid var(--button-color-general) !important;
+                    color: #000 !important;
+                }
+                
+                .page-link {
+                    color: #000 !important;
+                    padding: 10px 17px !important;
+                }
+
+                .btn-secondary {
+                    background-color: var(--background-color-header);
+                    border: none;
+                }
+
+                /*====HEADER===*/
+            .header {
+                background-color: var(--background-color-header) !important;
+                color: #fff !important;
+            }
+
+            #topbar {
+                background-color: var(--button-color-general) !important;
+            }
+
+            .btn-header {
+                background-color: var(--button-color-general) !important;
+                border: none !important;
+                border-radius: 20px;
+            }
+
+            .btn-header:hover {
+                background-color: var(--button-color-hover-general) !important;
+            }
+
+            .social-link-list {
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+                font-size: 17px;
+            }
+
+            .nav-link.active {
+                color: var(--button-color-general) !important;
+                border-bottom: 1px solid var(--button-color-general);
+
+            }
+
+            .nav-link:hover {
+                border-bottom: 1px solid var(--button-color-general);
+            }
+
+            .dropdown-menu {
+                background-color: var(--background-color-header);
+            }
+
+            .dropdown-item:hover {
+                background-color: var(--button-color-hover-general);
+                color: #000 !important;
+            }
+
+            /*======SLIDE======*/
+
+            .btn-slide {
+                background-color: var(--button-color-general);
+                border: none;
+                border-radius: 30px;
+            }
+
+            .btn-slide:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            #slide .carousel-indicators li.active {
+                background-color: var(--button-color-general);
+            }
+
+            /*======OFFERT AND MENU=========*/
+
+            .btn-offert, .btn-menu {
+                background-color: var(--button-color-general);
+            }
+
+            .btn-offert:hover, .btn-menu:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            #menu-filters .menu-link.active, #menu-filters .menu-link:hover{
+                background-color: var(--background-color-home-block-menu);
+                color: #fff !important;
+            }
+
+            #offert .box {
+                background-color: var(--background-color-home-block-menu);
+            }
+
+            #offert .box .offert-img {
+                border: 3px solid var(--button-color-general);
+            }
+
+            .menu .card-img {
+                background-color: var(--background-color-home-menu);
+                border-radius: 15px 15px 0 35px;
+            }
+
+            .menu .card {
+                background-color: var(--background-color-home-block-menu);
+                border: none;
+                border-radius: 20px;
+            }
+
+            .produit-cart {
+                background-color: var(--button-color-general);
+            }
+
+            /*=======ABOUT========*/
+
+            #about {
+                background-color: var(--background-color-home-about);
+            }
+
+            .btn-about {
+                background-color: var(--button-color-general);
+            }
+
+            .btn-about:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            a.play-btn::before {
+                background-color: var(--button-color-general);
+            }
+
+            a.play-btn::after {
+                background-color: #ffbe33cc;
+            }
+
+            /*========CUSTOMER====*/
+
+            .customer_owl-carousel .item .detail-box{
+                background-color: var(--background-color-home-about) !important;
+                margin-left: 10px;
+                margin-right: 10px;
+                border-radius: 10px;
+            }
+
+            .customer_owl-carousel .img-box {
+                border: 3px solid var(--button-color-general);
+                border-left: none;
+            }
+
+            @media screen and (max-width: 1000px) {
+                .customer_owl-carousel .img-box {
+                    border: 5px solid var(--button-color-general);
+                }
+            }
+
+
+            /*======FOOTER=====*/
+
+            #footer {
+                background-color: var(--background-color-home-footer);
+            }
+
+            .btn-share {
+                background-color: var(--button-color-general);
+                border: none;
+                border-radius: 30px;
+            }
+
+            .btn-share:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            #footer .social-link a i {
+                background-color: var(--button-color-general);
+            }
+
+            #footer .social-link a i:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            /*SERVICE*/
+            .service {
+                background-color: var(--background-color-service);
+            }
+
+            .icon-service {
+                border: 1px solid var(--button-color-general);
+            }
+
+            .liste-service-content:hover .icon-service {
+                background-color: var(--button-color-hover-general);
+                color: #000 !important;
+            }
+
+            .liste-service-content {
+                border: 1px solid var(--button-color-general);
+                border-radius: 30px;
+            }
+
+            .liste-service-content .btn {
+                background-color: var(--button-color-general);
+                border: none;
+                border-radius: 30px;
+            }
+
+            /*=======TABLE=======*/
+
+            .card-table {
+                border: 3px solid var(--button-color-general);
+            }
+
+            .numero-table p {
+                background-color: var(--button-color-general);
+            }
+
+            .table-footer a {
+                background-color: var(--button-color-general);
+                border: none;
+                border-radius: 30px;
+            }
+
+            .table-footer a:hover {
+                background-color: var(--button-color-hover-general);
+                border: none;
+                color: #000 !important;
+            }
+
+            /*=====CONTACT=====*/
+
+            .btn-contact {
+                background-color: var(--button-color-general);
+                border: none;
+                border-radius: 30px;
+            }
+
+            .btn-contact:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            /*======LOGIN==========*/
+            .login .card {
+                background-color: var(--background-color-header);
+            }
+
+            .btn-auth {
+                background-color: var(--button-color-general);
+                border: none;
+            }
+
+            .btn-outline-auth {
+                border: 1px solid var(--button-color-general);
+            }
+
+            .btn-auth:hover, .btn-outline-auth:hover {
+                background-color: var(--button-color-hover-general);
+                border: none;
+                color: #000 !important;
+            }
+
+            /*=======CART=======*/
+            .btn-cart {
+                background-color: var(--button-color-general);
+                border: none;
+            }
+
+            .btn-cart:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            /*=========PROFILE======*/
+            .mon-pofile-img img {
+                border: 5px solid var(--button-color-general);
+            }
+
+            .btn-profile, .btn-adresse {
+                background-color: var(--button-color-general);
+                border: none;
+                margin-left: -1px;
+            }
+
+            .btn-profile:hover, .btn-adresse:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            /*======ORDER======*/
+
+            .btn-order {
+                background-color: var(--button-color-general);
+                border: none;
+            }
+
+            .btn-order:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            .form-check input {
+                border: 1px solid #000;
+            }
+
+            /*========BOOKING========*/
+            .datepicker.dropdown-menu {
+                background-color: #fff !important;
+                padding: 10px 20px;
+            }
+
+            .btn-recap-booking, .btn-booking {
+                background-color: var(--button-color-general);
+                border: none;
+            }
+
+            .btn-recap-booking:hover, .btn-booking:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            /*=====TESTIMONIAL======*/
+            .btn-testimonial {
+                background-color: var(--button-color-general);
+                border: none;
+            }
+
+            .btn-testimonial:hover {
+                background-color: var(--button-color-hover-general);
+            }
+
+            .testimonial-content .card, .liste-testimonial-content .card {
+                background-color: var(--background-color-header);
+                border: none;
+                color: #fff;
+            }
+            
+
+        </style>
+
+        {% endblock %}
+
+       
+    </head>
+    <body>
+
+
+        {% include 'front/partials/header.html.twig' %}
+
+        {% block body %}{% endblock %}
+
+        {% include 'front/partials/footer.html.twig' %}
+
+
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/assets/plugins/bootstrap/js/bootstrap.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="https://js.stripe.com/v3"></script>
+        <script src="/assets/plugins/ckeditor/ckeditor.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/plugins/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="/assets/plugins/owlCarousel/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/bootstrap-datepicker.min.js"></script>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

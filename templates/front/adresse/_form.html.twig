@@ -1,0 +1,41 @@
+ {{form_start(form)}}
+    <div class="form-group mb-4">
+        <label for="" class="mb-2">Nom de la société</label>
+        <span class="error"> {{form_errors(form.company)}} </span>
+        {{form_widget(form.company)}}
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="" class="mb-2">Adresse exact <sup class="text-danger">*</sup></label>
+        <span class="error"> {{form_errors(form.adress)}} </span>
+        {{form_widget(form.adress)}}
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="" class="mb-2">Ville <sup class="text-danger">*</sup></label>
+        <span class="error"> {{form_errors(form.city)}} </span>
+        {{form_widget(form.city)}}
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="" class="mb-2">Code postal <sup class="text-danger">*</sup></label>
+        <span class="error"> {{form_errors(form.postal)}} </span>
+        {{form_widget(form.postal)}}
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="" class="mb-2">Numéro téléphone <sup class="text-danger">*</sup></label>
+        <span class="error"> {{form_errors(form.phone)}} </span>
+        {{form_widget(form.phone)}}
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-adresse text-black mb-4" style="width: 100%;">
+            {% if app.request.attributes.get('_route') == "app_adresse_new" %}
+                Ajouter l'adresse 
+            {% else %}
+                Modifier l'adresse
+            {% endif %}
+        </button>
+        <a href="{{path('app_account')}}" class="btn btn-secondary" style="width: 100%;">Retour</a>
+    </div>
+{{form_end(form)}}

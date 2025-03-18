@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de mes réservations{% endblock %}
+
+{% block body %}
+{% set liste = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "liste-booking" %}
+        {% set liste = homePage %}
+    {% endif %}
+{% endfor %}
+
+<section class="liste-booking">
+    <div class="container">
+        <h1 class="text-center fw-bold mb-4"> {{liste.title}} </h1>
+        <div class="text-center mb-5">
+            {{liste.description|raw}}
+        </div>
+        <div class="liste-commande-content">
+            <div class="row">
+                    <div class="booking-table shadow p-5">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="text-center text-nowrap">
+                                    <th>Date de réservation</th>
+                                    <th>Date d'arrivée</th>
+                                    <th>Heure d'arrivée</th>
+                                    <th>Type de tables</th>
+                                    <th>Capacités</th>
+                                    <th>Emplacement</th>
+                                    <th>Note spéciales</th>
+                                    <th>Coût de réservation</th>
+                                    <th>Description</th>
+                                    <th>Est-il payé?</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for booking in bookings %}
+                                <tr class="text-center text-nowrap ">
+                                    <td class="align-middle"> {{booking.createdAt|date('d-m-Y')}} </td>
+                                    <td class="align-middle"> {{booking.dateBooking|date('d-m-Y')}}</td>
+                                    <td class="align-middle"> {{booking.bookingHour|date('H:i')}} </td>
+                                    <td class="align-middle"> {{booking.tableRestaurant.type}} </td>
+                                    <td class="align-middle"> {{booking.tableRestaurant.capacity}} </td>
+                                    <td class="align-middle"> {{booking.tableRestaurant.emplacement}} </td>
+                                    <td class="align-middle"> {{booking.tableRestaurant.noteSpecial}} </td>
+                                    <td class="align-middle"> {{booking.price}} €</td>
+                                    <td class="align-middle"> {{booking.tableRestaurant.description|raw}} </td>
+                                    <td class="align-middle">
+                                        {% set isPaidYes = 'Oui' %}
+                                        {% set isPaidNo = 'Non' %}
+                                        {% if booking.isPaid == 0 %}
+                                            {{isPaidNo}}
+                                        {% else %}
+                                            {{isPaidYes}}
+                                        {% endif %}
+                                    </td>
+                                    <td class="align-middle">
+                                        {% if booking.isPaid == 0 %}
+                                            <a id="checkout-button-booking" class="btn btn-booking btn-sm px-3">Payé</a>
+                                        {% endif %}
+                                        {% if booking.isPaid == 1 and booking.isConfirmed == 0 %}
+                                            <a href="{{path('confirmation_reservation', {'token' : booking.resetToken})}}" class="btn btn-booking btn-sm px-3">Confirmer la réservation</a>
+                                        {% endif %}
+                                        
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="pagination d-flex justify-content-center mt-5">
+                            {{ knp_pagination_render(bookings) }}
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

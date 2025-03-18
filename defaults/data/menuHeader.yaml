@@ -1,0 +1,87 @@
+menu1:
+  name: Accueil
+  link: app_home
+  isParameter: false
+
+menu2:
+  name: A propos
+  link: app_about
+  isParameter: false
+
+menu3:
+  name: Produit
+  link: app_produit
+  isParameter: false
+
+menu4:
+  name: Table
+  link: app_table
+  isParameter: false
+
+menu5:
+  name: Réservation
+  link: app_booking_index
+  isParameter: false
+
+menu6:
+  name: Contact
+  link: app_contact
+  isParameter: false
+
+menu7:
+  name: Témoignage
+  link: app_testimonial
+  isParameter: false
+
+menu8:
+  name: Utilisateur
+  link: '#'
+  isParameter:
+  dropdownMenus:
+    block1:
+      name: Donnez des avis
+      link: app_testimonial_add
+      isUserLogout: false
+      isParameter: false
+
+    block2:
+      name: Mes Commandes
+      link: app_order_list
+      isUserLogout: false
+      isParameter: false
+
+    block3:
+      name: Mes Réservations
+      link: app_booking_list
+      isUserLogout: false
+      isParameter: false
+
+    block4:
+      name: Mon Compte
+      link: app_account
+      isUserLogout: false
+      isParameter: false
+
+    block5:
+      name: Mes Témoignages
+      link: app_testimonial_list
+      isUserLogout: false
+      isParameter: false
+
+    block6:
+      name: Se Déconnecter
+      link: app_logout_front
+      isUserLogout: false
+      isParameter: false
+
+    block7:
+      name: S'inscrire
+      link: app_inscription
+      isUserLogout: true
+      isParameter: false
+
+    block8:
+      name: Se Connecter
+      link: app_login_front
+      isUserLogout: true
+      isParameter: false

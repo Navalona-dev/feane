@@ -1,0 +1,80 @@
+{% extends 'admin/base/base.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block body %}
+<section class="admin-register">
+    <div class="container">
+        <div class="card shadow p-5">
+            <h1 class="fw-bold fs-3 text-center text-white mb-5">Inscrivez-vous</h1>
+
+            {{form_start(form)}}
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                        <div class="form-group mb-4">
+                            <label for="" class="mb-2 text-white">Votre nom de famille<sup class="text-danger fs-6">*</sup></label>
+                            <span class="error"> {{form_errors(form.firstName)}} </span>
+                            {{form_widget(form.firstName)}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                        <div class="form-group mb-4">
+                            <label for="" class="mb-2 text-white">Votre Prénom</label>
+                            <span class="error"> {{form_errors(form.lastName)}} </span>
+                            {{form_widget(form.lastName)}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                        <div class="form-group mb-4">
+                            <label for="" class="mb-2 text-white">Votre adrese e-mail<sup class="text-danger fs-6">*</sup></label>
+                            <span class="error"> {{form_errors(form.email)}} </span>
+                            {{form_widget(form.email)}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                        <div class="form-group mb-4">
+                            <label for="" class="mb-2 text-white">Votre photo de profile<sup class="text-danger fs-6">*</sup></label>
+                            <span class="error"> {{form_errors(form.imageFile)}} </span>
+                            {{form_widget(form.imageFile)}}
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                        <div class="form-group mb-4">
+                            <label for="" class="mb-2 text-white">Votre mot de passe<sup class="text-danger fs-6">*</sup></label>
+                            <span class="error"> {{form_errors(form.password)}} </span>
+                            {{form_widget(form.password)}}
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                        <div class="form-group mb-4">
+                            <label for="" class="mb-2 text-white">Confirmer votre mot de passe<sup class="text-danger fs-6">*</sup></label>
+                            <span class="error"> {{form_errors(form.passwordConfirm)}} </span>
+                            {{form_widget(form.passwordConfirm)}}
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="form-group d-flex justify-content-center mb-2">
+                    <span class="error"> {{form_errors(form.captcha)}} </span>
+                </div>
+                <div class="form-group mb-4 d-flex justify-content-center">
+                    {{form_widget(form.captcha)}}
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" class="btn btn-primary btn-md text-black" style="width: 100%;">Enregistrer les informations</button>
+                </div>
+                <div class="d-flex flex-wrap align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2 text-white">Vous avez déjà un compte</p>
+                    <a href="{{path('app_login')}}" class="btn btn-outline-primary btn-sm px-3 text-white"> Se connecter </a>
+                </div>
+
+            {{form_end(form)}}
+        </div>
+    </div>
+</section>
+{% endblock %}

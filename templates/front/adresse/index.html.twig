@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adresse index{% endblock %}
+
+{% block body %}
+{% set adresse = '' %}
+{% for homePage in homePages %}
+    {% if homePage.label == "liste-adresse" %}
+        {% set adresse = homePage %}
+    {% endif %}
+{% endfor %}
+   <section class="liste-adresse">
+    <div class="container">
+        <h1 class="text-center fw-bold fs-1 mb-4"> {{adresse.title}} </h1>
+        <div class="text-center mb-5">
+            {{adresse.description|raw}}
+        </div>
+        <div class="adresse-content">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            {% endfor %}
+
+            {% include 'front/partials/confirm_delete.html.twig' %}
+
+            <div class="adresse-bouton mb-3 mt-4">
+                <a href="{{path('app_adresse_new')}}" class="btn btn-primary btn-sm mx-2 px-5 text-black btn-adresse">Nouveau Adresse</a>
+                <a href="{{path('app_account')}}" class="btn btn-primary btn-sm mx-2 px-5 text-black btn-adresse">Mon Profile</a>
+            </div>
+            <div class="row">
+                {% for adresse in user.adresses %}
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-4">
+                    <div class="card shadow p-5">
+                        {% if adresse.company is not empty %}
+                            <p> <span class="fw-bold" style="margin-right: 15px;">Société : </span>  {{adresse.company}} </p>
+                        {% else %}
+                            <p> <span class="fw-bold" style="margin-right: 15px;">Société : </span> Pas de société</p>
+                        {% endif %}
+                        <p> <span class="fw-bold" style="margin-right: 15px;"> Adresse : </span>{{adresse.adress}} </p>
+                        <p> <span class="fw-bold" style="margin-right: 15px;"> Ville : </span>{{adresse.city}} </p>
+                        <p> <span class="fw-bold" style="margin-right: 15px;"> Code Postal : </span>{{adresse.postal}} </p>
+                        <p> <span class="fw-bold" style="margin-right: 15px;"> Téléphone : </span>{{adresse.phone}} </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{path('app_adresse_edit', {'id' : adresse.id})}}" class="text-primary">Modifier</a>
+                            |
+                            <a href="{{path('app_adresse_delete', {'id' : adresse.id})}}" class="text-danger delete-link">Supprimer</a>
+                        </div>
+                    
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+   </section>
+{% endblock %}

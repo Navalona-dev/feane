@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande{% endblock %}
+
+{% block body %}
+<section class="success-order">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="card shadow p-5">
+                    <h3 class="text-center fw-bold mb-4">Confirmation de commande</h3>
+                    <p>
+                        Bonjour <strong> {{order.user.lastName}} {{order.user.firstName|upper}}</strong> 
+                    </p>
+                    <p>
+                        Nous vous remercions pour votre commande n°: <strong>{{order.reference}}</strong>
+                    </p>
+                    <p>
+                        Une confirmation vient de vous être envoyée par email à l'adresse {{order.user.email}}
+                    </p>
+                    <hr>
+                    <p>Votre commande sera livrée par <strong> {{order.carrierName}} </strong> à l'adress suivante : <br/>
+                    {{order.delivery|raw}} </p>
+                    <hr>
+                    <p>
+                        Pour suivre vote commande rendez-vous dans votre 
+                        <a href="{{path('app_order_list')}}" class="text-primary">liste de commande</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% block _register_user_form_adresses_widget %}
+
+    <p>Vous pouvez ajoute vos adresses ici</p>
+
+    {{ form_widget(form) }}
+
+    <input type="hidden" id="widgets-counter" value="0">
+
+    <div class="form-group">
+        <button class="btn btn-warning btn-sm mt-3 mb-4 px-4" id="add-adresse" type="button"> Ajouter une adresse </button>
+    </div>
+    
+{% endblock %}
+
+{% block _register_user_form_adresses_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _register_user_form_adresses_entry_widget %}
+    <div class="form-group mt-3" id="block_{{id}}">
+        <div class="row mb-4">
+           
+            <div class="col-10">
+                <div class="row mb-4">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        {{form_widget(form.company)}}
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        {{form_widget(form.phone)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        {{form_widget(form.adress)}}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        {{form_widget(form.city)}}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        {{form_widget(form.postal)}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-danger" type="button" data-action="delete" data-target="#block_{{id}}">X</button>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %}
