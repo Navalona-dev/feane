@@ -22,10 +22,10 @@
                     {% if homePage.label == "admin_auth" %}
                         <h3 class="fw-bold fs-2">{{homePage.title}}</h3>
                         {{homePage.description|raw}}
-                        <a href="{{path('app_register')}}" style="font-size: 13px;" class="btn btn-outline-primary mt-4 btn-md px-5 text-white"> 
+                        {#<a href="{{path('app_register')}}" style="font-size: 13px;" class="btn btn-outline-primary mt-4 btn-md px-5 text-white"> 
                             <i class="fa fa-user mr-2" style="margin-right: 15px;"></i> 
                             {{homePage.homePageButton}}
-                        </a>
+                        </a>#}
 
                     {% endif %}
                     {% endfor %}
@@ -73,7 +73,7 @@
                     
                         <div class="d-flex flex-wrap align-items-center justify-content-center">
                             <p class="mb-0 me-2 mb-3">Vous n'avez pas de compte</p>
-                            <a href="{{path('app_register')}}" style="font-size: 13px;" class="btn btn-outline-primary mb-3 btn-sm px-3 text-white"> Créer nouveau compte </a>
+                            {#<a href="{{path('app_register')}}" style="font-size: 13px;" class="btn btn-outline-primary mb-3 btn-sm px-3 text-white"> Créer nouveau compte </a>#}
                         </div>
                     {{form_end(form)}}
                 </div>
